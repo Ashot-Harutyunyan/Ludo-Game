@@ -1,4 +1,6 @@
 const dice = document.querySelectorAll('.dice')
+const components = document.querySelectorAll('[data-id]')
+const buttons = document.querySelectorAll('[data-target]')
 
 const playAreaForFigures = [
     'top-left-green-play-area-for-figures',
@@ -122,3 +124,35 @@ function clickDice(e) {
     }
 }
 
+let currentScreen = 'start'
+
+function switchScreen(targetAttribute) {
+    if (currentScreen === targetAttribute) return
+
+    currentScreen = targetAttribute
+
+    components.forEach(element => {
+        const componentDataId = element.getAttribute('data-id')
+
+        if (componentDataId === currentScreen) {
+            element.classList.remove('hidden')
+        } else {
+            element.classList.add('hidden')
+        }
+    });
+}
+
+function screenSwitchClick(event) {
+
+    const targetButton = event.currentTarget
+
+    const targetAttribute = targetButton.getAttribute('data-target')
+
+    if (targetAttribute) {
+        switchScreen(targetAttribute)
+    }
+}
+
+buttons.forEach(button => {
+    button.addEventListener('click', screenSwitchClick)
+})

@@ -6,118 +6,169 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ludo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
     <link rel="icon" href="./img/title-icon.png">
     <link rel="stylesheet" href="css/style.css">
     <script defer src="js/script.js"></script>
 </head>
 <body>
-    <main>
-        <section class="container-dice-top">
-            <div class="dice-green-and-player-green">
-                <div class="player-green">
-                    <img src="./img/player-green.svg" alt="player green">
+
+        <section class="container-first" data-id="start">
+            <div class="title-game">
+                <div class="title-game-ludo">
+                    <div><span>L</span></div>
+                    <div><span>U</span></div>
+                    <div><span>D</span></div>
+                    <div><span>O</span></div>
                 </div>
-                <div class="dice">
-                    <div class="side front"></div>
-                    <div class="side back"></div>
-                    <div class="side left"></div>
-                    <div class="side right"></div>
-                    <div class="side top"></div>
-                    <div class="side button"></div>
-                </div>
-                <div class="reminder-green">
-                    <img src="img/arrow-reminder-right.svg" alt="arrow reminder">
-                </div>
+                <p>KING</p>
             </div>
-            <div class="dice-red-and-player-red">
-                <div class="reminder-red">
-                    <img src="img/arrow-reminder-left.svg" alt="arrow reminder">
+            <div class="container-first-img">
+                <img src="./img/title-icon.png" alt="logo">
+            </div>
+             <button class="button-play" data-target="choose">PLAY NOW</button>
+        </section>
+
+        <section class="container-second hidden" data-id="choose">
+            <button class="button-back" data-target="start">
+                <img src="./img/arrow-back.svg" alt="arrow back">
+            </button>
+            <div class="container-second-box-one">
+                <p>play against the computer</p>
+                <div class="container-user-devices">
+                    <img class="img-user" src="./img/user.svg" alt="user">
+                    <div class="container-round-arrow">
+                        <img src="img/round-arrow.svg" alt="round arrow">
+                    </div>
+                    <img class="img-devices" src="./img/devices.svg" alt="devices">
                 </div>
-                <div class="dice">
-                    <div class="side front"></div>
-                    <div class="side back"></div>
-                    <div class="side left"></div>
-                    <div class="side right"></div>
-                    <div class="side top"></div>
-                    <div class="side button"></div>
+                <button class="button-play" data-target="game">PLAY</button>
+            </div>
+            <div class="container-second-box-two">
+                <p>play against each other</p>
+                <div class="container-users">
+                    <img class="img-user" src="./img/user.svg" alt="user">
+                    <div class="container-round-arrow">
+                        <img src="img/round-arrow.svg" alt="round arrow">
+                    </div>
+                    <img class="img-user" src="./img/user.svg" alt="user">
                 </div>
-                <div class="player-red">
-                    <img src="./img/player-red.svg" alt="player red">
-                </div>
+                <button class="button-play" data-target="game">PLAY</button>
             </div>
         </section>
 
-        <section class="container">
-            <section class="top-left-green">
-                <div class="top-left-green-play-area-for-figures green"></div>
-            </section>
-            <div class="top-right-red-play-area red">
-                <img class="arrow-red" src="./img/arrow-red.svg" alt="arrow red">
-                <img class="icon-red" src="./img/star.svg" alt="star icon">
-            </div>
-            <section class="top-right-red">
-                <div class="top-right-red-play-area-for-figures red"></div>
-            </section>
-            <div class="center-left-green-play-area green">
-                <img class="arrow-green" src="./img/arrow-green.svg" alt="arrow green">
-                <img class="icon-green" src="./img/star.svg" alt="star icon">
-            </div>
-            <div class="center">
-                <div class="center-red"></div>
-                <div class="center-yellow"></div>
-                <div class="center-blue"></div>
-                <div class="center-green"></div>
-            </div>
-            <div class="center-right-yellow-play yellow">
-                <img class="arrow-yellow" src="./img/arrow-yellow.svg" alt="arrow yellow">
-                <img class="icon-yellow" src="./img/star.svg" alt="star icon">
-            </div>
-            <section class="bottom-left-blue">
-                <div class="bottom-left-blue-play-area-for-figures blue"></div>
-            </section>
-            <div class="bottom-left-blue-play blue">
-                <img class="arrow-blue" src="./img/arrow-blue.svg" alt="arrow blue">
-                <img class="icon-blue" src="./img/star.svg" alt="star icon">
-            </div>
-            <section class="bottom-right-yellow">
-                <div class="bottom-right-yellow-play-area-for-figures yellow"></div>
-            </section>
-        </section>
+        <main class="hidden" data-id="game">
+            <button class="button-back" data-target="choose">
+                <img src="./img/arrow-back.svg" alt="arrow back">
+            </button>
 
-        <section class="container-dice-bottom">
-            <div class="dice-blue-and-player-blue">
-                <div class="player-blue">
-                    <img src="./img/player-blue.svg" alt="player blue">
+            <section class="container-dice-top">
+                <div class="dice-green-and-player-green">
+                    <div class="player-green">
+                        <img src="./img/player-green.svg" alt="player green">
+                    </div>
+                    <div class="dice">
+                        <div class="side front"></div>
+                        <div class="side back"></div>
+                        <div class="side left"></div>
+                        <div class="side right"></div>
+                        <div class="side top"></div>
+                        <div class="side button"></div>
+                    </div>
+                    <div class="reminder-green">
+                        <img src="img/arrow-reminder-right.svg" alt="arrow reminder">
+                    </div>
                 </div>
-                <div class="dice">
-                    <div class="side front"></div>
-                    <div class="side back"></div>
-                    <div class="side left"></div>
-                    <div class="side right"></div>
-                    <div class="side top"></div>
-                    <div class="side button"></div>
+                <div class="dice-red-and-player-red">
+                    <div class="reminder-red">
+                        <img src="img/arrow-reminder-left.svg" alt="arrow reminder">
+                    </div>
+                    <div class="dice">
+                        <div class="side front"></div>
+                        <div class="side back"></div>
+                        <div class="side left"></div>
+                        <div class="side right"></div>
+                        <div class="side top"></div>
+                        <div class="side button"></div>
+                    </div>
+                    <div class="player-red">
+                        <img src="./img/player-red.svg" alt="player red">
+                    </div>
                 </div>
-                <div class="reminder-blue">
-                    <img src="img/arrow-reminder-right.svg" alt="arrow reminder">
+            </section>
+
+            <section class="container">
+                <section class="top-left-green">
+                    <div class="top-left-green-play-area-for-figures green"></div>
+                </section>
+                <div class="top-right-red-play-area red">
+                    <img class="arrow-red" src="./img/arrow-red.svg" alt="arrow red">
+                    <img class="icon-red" src="./img/star.svg" alt="star icon">
                 </div>
-            </div>
-            <div class="dice-yellow-and-player-yellow">
-                <div class="reminder-yellow">
-                    <img src="img/arrow-reminder-left.svg" alt="arrow reminder">
+                <section class="top-right-red">
+                    <div class="top-right-red-play-area-for-figures red"></div>
+                </section>
+                <div class="center-left-green-play-area green">
+                    <img class="arrow-green" src="./img/arrow-green.svg" alt="arrow green">
+                    <img class="icon-green" src="./img/star.svg" alt="star icon">
                 </div>
-                <div class="dice">
-                    <div class="side front"></div>
-                    <div class="side back"></div>
-                    <div class="side left"></div>
-                    <div class="side right"></div>
-                    <div class="side top"></div>
-                    <div class="side button"></div>
+                <div class="center">
+                    <div class="center-red"></div>
+                    <div class="center-yellow"></div>
+                    <div class="center-blue"></div>
+                    <div class="center-green"></div>
                 </div>
-                <div class="player-yellow">
-                    <img src="./img/player-yellow.svg" alt="player yellow">
+                <div class="center-right-yellow-play yellow">
+                    <img class="arrow-yellow" src="./img/arrow-yellow.svg" alt="arrow yellow">
+                    <img class="icon-yellow" src="./img/star.svg" alt="star icon">
                 </div>
-            </div>
-        </section>
-    </main>
+                <section class="bottom-left-blue">
+                    <div class="bottom-left-blue-play-area-for-figures blue"></div>
+                </section>
+                <div class="bottom-left-blue-play blue">
+                    <img class="arrow-blue" src="./img/arrow-blue.svg" alt="arrow blue">
+                    <img class="icon-blue" src="./img/star.svg" alt="star icon">
+                </div>
+                <section class="bottom-right-yellow">
+                    <div class="bottom-right-yellow-play-area-for-figures yellow"></div>
+                </section>
+            </section>
+
+            <section class="container-dice-bottom">
+                <div class="dice-blue-and-player-blue">
+                    <div class="player-blue">
+                        <img src="./img/player-blue.svg" alt="player blue">
+                    </div>
+                    <div class="dice">
+                        <div class="side front"></div>
+                        <div class="side back"></div>
+                        <div class="side left"></div>
+                        <div class="side right"></div>
+                        <div class="side top"></div>
+                        <div class="side button"></div>
+                    </div>
+                    <div class="reminder-blue">
+                        <img src="img/arrow-reminder-right.svg" alt="arrow reminder">
+                    </div>
+                </div>
+                <div class="dice-yellow-and-player-yellow">
+                    <div class="reminder-yellow">
+                        <img src="img/arrow-reminder-left.svg" alt="arrow reminder">
+                    </div>
+                    <div class="dice">
+                        <div class="side front"></div>
+                        <div class="side back"></div>
+                        <div class="side left"></div>
+                        <div class="side right"></div>
+                        <div class="side top"></div>
+                        <div class="side button"></div>
+                    </div>
+                    <div class="player-yellow">
+                        <img src="./img/player-yellow.svg" alt="player yellow">
+                    </div>
+                </div>
+            </section>
+        </main>
+
 </body>
 </html>

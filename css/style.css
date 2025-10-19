@@ -4,14 +4,180 @@
     box-sizing: border-box;
 }
 body {
-    /*background-color: rgba(2, 2, 255, 0.65);*/
     background-image: url("../img/background-image.jpg");
+}
+body .hidden {
+    display: none;
+}
+.container-first {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.title-game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.title-game-ludo {
+    width: max-content;
+    font-size: 2rem;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    font-weight: 900;
+    display: flex;
+    gap: 10px;
+}
+.title-game p {
+    font-family: 'Luckiest Guy', cursive;
+    color: #FBC835;
+    letter-spacing: 10px;
+    font-size: clamp(50px, 12vw, 60px);
+    padding-top: 20px;
+}
+.title-game-ludo div {
+    background: #FFFFFF;
+    border-radius: 50%;
+}
+.title-game-ludo span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: transparent;
+    background-image: conic-gradient(
+            #0089D9 0 25%,
+            #EE3107 25% 50%,
+            #6FCE66 50% 75%,
+            #FED403 75%
+    );
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: animateBackground 4.5s ease-in-out infinite;
+}
+.title-game-ludo div:nth-child(1) {
+    border: 5px solid #0089D9;
+}
+.title-game-ludo div:nth-child(2) {
+    border: 5px solid #EE3107;
+}
+.title-game-ludo div:nth-child(3) {
+    border: 5px solid #6FCE66;
+}
+.title-game-ludo div:nth-child(4) {
+    border: 5px solid #FED403;
+}
+.container-first-img {
+    max-width: 500px;
+    width: 100%;
+}
+.container-first-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.button-play {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: white;
+    border: none;
+    padding: 20px 40px 10px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    cursor: pointer;
+    background-size: 400% 400%;
+    animation: bgChange 4s infinite ease-in-out;
+    transition: transform 0.2s ease;
+}
+.button-play:hover {
+    transform: scale(1.05);
+}
+.container-second {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+.container-second-box-one,
+.container-second-box-two {
+    position: relative;
+    border: 5px solid #0089D9;
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    animation: borderChange 4s infinite ease-in-out;
+}
+.container-second-box-one p,
+.container-second-box-two p {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    font-family: 'Luckiest Guy', cursive;
+    color: #FBC835;
+    top: 0;
+    left: 0;
+    font-size: clamp(16px, 4vw, 25px);
+    padding-top: 20px;
+}
+.container-user-devices,
+.container-users {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+.container-user-devices .img-user,
+.container-users .img-user {
+    width: 100px;
+}
+.container-user-devices .img-devices {
+    width: 100px;
+}
+.container-round-arrow {
+    width: 200px;
+    height: 150px;
+}
+.button-back {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: clamp(30px, 10vw, 50px);
+    height: clamp(30px, 10vw, 50px);
+}
+.button-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.button-back:hover {
+    transform: scale(1.05);
 }
 main {
     width: 645px;
     margin: 0 auto;
 }
-
 .container-dice-bottom,
 .container-dice-top {
     display: flex;
@@ -483,7 +649,6 @@ main {
 .img-star-sun-4-yellow.active, .img-star-sun-3-yellow.active, .img-star-sun-2-yellow.active, .img-star-sun-1-yellow.active {
     display: block;
 }
-
 .img-player-4-red, .img-player-3-red, .img-player-2-red, .img-player-1-red,
 .img-player-4-green, .img-player-3-green, .img-player-2-green, .img-player-1-green,
 .img-player-4-blue, .img-player-3-blue, .img-player-2-blue, .img-player-1-blue,
@@ -493,6 +658,34 @@ main {
     position: absolute;
     bottom: 18px;
     cursor: pointer;
+}
+@keyframes animateBackground {
+    25% {
+        background-position: 0 100%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    75% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+@keyframes bgChange {
+    0%   { background-color: #0089D9; }
+    25%  { background-color: #EE3107; }
+    50%  { background-color: #6FCE66; }
+    75%  { background-color: #FED403; }
+    100% { background-color: #0089D9; }
+}
+@keyframes borderChange {
+    0%   { border-color: #0089D9; }
+    25%  { border-color: #EE3107; }
+    50%  { border-color: #6FCE66; }
+    75%  { border-color: #FED403; }
+    100% { border-color: #0089D9; }
 }
 @keyframes cube {
     0% {
@@ -818,5 +1011,31 @@ main {
     .reminder-green, .reminder-blue, .reminder-red, .reminder-yellow {
         width: 20px;
         height: 20px;
+    }
+    .container-first {
+        padding: 0 35px;
+    }
+    .title-game-ludo span {
+        width: 45px;
+        height: 45px;
+    }
+    .container-second-box-one button,
+    .container-second-box-two button {
+        padding: 15px 35px 5px 35px;
+        font-size: 20px;
+    }
+    .container-user-devices .img-devices {
+        width: 60px;
+    }
+    .container-user-devices .img-user,
+    .container-users .img-user {
+        width: 60px;
+    }
+    .container-round-arrow {
+        width: 120px;
+        height: 90px;
+    }
+    .container-round-arrow img {
+        width: 100%;
     }
 }
