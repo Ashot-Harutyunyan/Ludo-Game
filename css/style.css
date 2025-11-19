@@ -9,6 +9,245 @@ body {
 body .hidden {
     display: none;
 }
+dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-width: 100vw;
+    max-height: 100vh;
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: #000000b3;
+    overflow: hidden;
+}
+.dialog-players {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.dialog-section-content {
+    background: linear-gradient(to bottom, #1a0033 0%, #000080 50%, #1a0033 100%);
+    border: 5px solid #FBC835;
+    border-radius: 15px;
+    padding: 25px 35px;
+    width: 380px;
+    max-width: 90%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+.dialog-title {
+    font-family: 'Luckiest Guy', cursive, sans-serif;
+    font-size: clamp(1.3rem, 1.5rem, 2.2em);
+    color: #FBC835;
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow:
+            -2px -2px 0 #000,
+            2px -2px 0 #000,
+            -2px  2px 0 #000,
+            2px  2px 0 #000,
+            0 0 8px rgba(255, 255, 0, 0.7);
+    letter-spacing: 2px;
+}
+.player-options {
+    display: flex;
+    flex-direction: column;
+}
+.option-item input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+}
+.option-item .option-label::before {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 4px solid #ffcc00;
+    margin-right: 15px;
+    vertical-align: middle;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+}
+.option-item input[type="radio"]:checked + .option-label::before {
+    border-color: #ffcc00;
+}
+.option-item input[type="radio"]:checked + .option-label::after {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    width: 9px;
+    height: 16px;
+    border: solid #ffcc00;
+    border-width: 0 4px 4px 0;
+    transform: rotate(45deg);
+}
+.option-item {
+    position: relative;
+    margin: 10px 0;
+}
+.option-item .option-label {
+    font-family: 'Luckiest Guy', cursive, sans-serif;
+    color: #FFFFFF;
+    font-size: 24px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    padding: 5px 0;
+    display: block;
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px  1px 0 #000,
+            1px  1px 0 #000;
+}
+.dialog-section-footer {
+    max-width: 380px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    gap: 20px;
+}
+.button-icon,
+.button-next {
+    font-family: 'Luckiest Guy', cursive, sans-serif;
+    font-size: clamp(1.1rem, 1.2rem, 1.3em);
+    letter-spacing: 5px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px  1px 0 #000,
+            1px  1px 0 #000;
+}
+.button-icon:active,
+.button-next:active {
+    transform: scale(0.98);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+.dialog-button-back {
+    background: linear-gradient(to bottom, #1a0033 0%, #000080 50%, #1a0033 100%);
+    padding: 8px 15px;
+    border: 2px solid #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: clamp(50px, 55px, 60px);
+    height: clamp(50px, 55px, 60px);
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(255,255,255,0.3);
+}
+.dialog-button-back img {
+    width: clamp(25px, 30px, 35px);
+    height: clamp(25px, 30px, 35px);
+}
+.button-next {
+    background: linear-gradient(to bottom, #1a0033 0%, #000080 50%, #1a0033 100%);
+    color: white;
+    border: 2px solid #FFFFFF;
+    padding: 20px 35px 15px 35px;
+    letter-spacing: 2px;
+    border-radius: 12px;
+}
+.color-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.color-options label {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.color-options label img {
+    width: 100%;
+    height: 100%;
+}
+.color-options input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+.color-options label {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+}
+.color-options label img {
+    width: 60px;
+    height: 60px;
+    z-index: 10;
+}
+.color-options label::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 4px solid;
+    background: transparent;
+    position: relative;
+    margin-top: -10px;
+    z-index: 5;
+    transition: all 0.15s ease-out;
+}
+.color-options input[type="radio"]:checked + label::before {
+    content: '';
+    position: absolute;
+    top: 76px;
+    left: 24px;
+    width: 6px;
+    height: 18px;
+    border: solid #FFFFFF;
+    border-width: 0 6px 6px 0;
+    transform: rotate(45deg);
+    z-index: 20;
+}
+.color-options #color-blue + label::after {
+    border-color: #0089D9;
+}
+.color-options #color-red + label::after {
+    border-color: #EE3107;
+}
+.color-options #color-green + label::after {
+    border-color: #6FCE66;
+}
+.color-options #color-yellow + label::after {
+    border-color: #FED403;
+}
+.color-options #color-blue:checked + label::after {
+    background: #0089D9;
+}
+.color-options #color-red:checked + label::after {
+    background: #EE3107;
+}
+.color-options #color-green:checked + label::after {
+    background: #6FCE66;
+}
+.color-options #color-yellow:checked + label::after {
+    background: #FED403;
+}
 .container-first {
     height: 100vh;
     position: relative;
@@ -40,6 +279,12 @@ body .hidden {
     letter-spacing: 10px;
     font-size: clamp(50px, 12vw, 60px);
     padding-top: 20px;
+    text-shadow:
+            -2px -2px 0 #000,
+            2px -2px 0 #000,
+            -2px  2px 0 #000,
+            2px  2px 0 #000,
+            0px 0px 8px rgba(255, 255, 0, 0.7);
 }
 .title-game-ludo div {
     background: #FFFFFF;
@@ -138,6 +383,12 @@ body .hidden {
     left: 0;
     font-size: clamp(16px, 4vw, 25px);
     padding-top: 20px;
+    text-shadow:
+            -2px -2px 0 #000,
+            2px -2px 0 #000,
+            -2px  2px 0 #000,
+            2px  2px 0 #000,
+            0px 0px 8px rgba(255, 255, 0, 0.7);
 }
 .container-user-devices,
 .container-users {
@@ -163,8 +414,8 @@ body .hidden {
     background: transparent;
     border: none;
     cursor: pointer;
-    width: clamp(30px, 10vw, 50px);
-    height: clamp(30px, 10vw, 50px);
+    width: clamp(30px, 8vw, 50px);
+    height: clamp(30px, 8vw, 50px);
 }
 .button-back img {
     width: 100%;
@@ -211,21 +462,21 @@ main {
     width: 100%;
     height: 100%;
 }
-.reminder-green,
-.reminder-blue,
-.reminder-red,
-.reminder-yellow {
+.arrow-reminder.green,
+.arrow-reminder.blue,
+.arrow-reminder.red,
+.arrow-reminder.yellow {
     width: 45px;
     height: 45px;
 }
-.reminder-red,
-.reminder-yellow {
+.arrow-reminder.red,
+.arrow-reminder.yellow {
     transform: translateX(10px);
 }
-.reminder-green img,
-.reminder-blue img,
-.reminder-red img,
-.reminder-yellow img {
+.arrow-reminder.green img,
+.arrow-reminder.blue img,
+.arrow-reminder.red img,
+.arrow-reminder.yellow img {
     width: 100%;
     height: 100%;
     animation: reminder 1s linear infinite alternate;
@@ -851,7 +1102,10 @@ main {
     .side {
         border-radius: 8px;
     }
-    .reminder-green, .reminder-blue, .reminder-red, .reminder-yellow {
+    .arrow-reminder.green,
+    .arrow-reminder.blue,
+    .arrow-reminder.red,
+    .arrow-reminder.yellow {
         width: 30px;
         height: 30px;
     }
@@ -1008,7 +1262,10 @@ main {
     .dice .button div {
         margin: 3px;
     }
-    .reminder-green, .reminder-blue, .reminder-red, .reminder-yellow {
+    .arrow-reminder.green,
+    .arrow-reminder.blue,
+    .arrow-reminder.red,
+    .arrow-reminder.yellow {
         width: 20px;
         height: 20px;
     }

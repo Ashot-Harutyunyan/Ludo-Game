@@ -1,6 +1,13 @@
 const dice = document.querySelectorAll('.dice')
 const components = document.querySelectorAll('[data-id]')
 const buttons = document.querySelectorAll('[data-target]')
+const dialog = document.getElementById('dialog')
+const dialogButtonPrev = document.getElementById('dialog-prev')
+const dialogButtonNext = document.getElementById('dialog-next')
+const dialogComponents = document.querySelectorAll('.dialog-section-content')
+const colorOptions = document.querySelectorAll('input[name="color-option"]')
+const playerSelection = document.querySelectorAll('input[name="num-players"]')
+const arrowReminder = document.querySelectorAll('.arrow-reminder')
 
 const playAreaForFigures = [
     'top-left-green-play-area-for-figures',
@@ -131,21 +138,25 @@ function switchScreen(targetAttribute) {
 
     currentScreen = targetAttribute
 
-    components.forEach(element => {
-        const componentDataId = element.getAttribute('data-id')
+    if (currentScreen === 'dialog') {
+        dialog.showModal()
+    }else {
+        components.forEach(element => {
+            const componentDataId = element.getAttribute('data-id')
 
-        if (componentDataId === currentScreen) {
-            element.classList.remove('hidden')
-        } else {
-            element.classList.add('hidden')
-        }
-    });
+            if (componentDataId === currentScreen) {
+                element.classList.remove('hidden')
+                if(dialog.open) dialog.close()
+            } else {
+                element.classList.add('hidden')
+            }
+        })
+    }
 }
 
 function screenSwitchClick(event) {
 
     const targetButton = event.currentTarget
-
     const targetAttribute = targetButton.getAttribute('data-target')
 
     if (targetAttribute) {
@@ -153,6 +164,102 @@ function screenSwitchClick(event) {
     }
 }
 
+let dialogPage = 'first'
+let colorValue = undefined
+let players = 2
+
+function selectColor(){
+    colorValue = this.value
+    dialogButtonNext.disabled = false
+    dialogButtonNext.setAttribute('data-target', 'game')
+}
+
+function switchDialogPage(targetPage) {
+    dialogComponents.forEach(el => {
+        el.classList.toggle('hidden', !el.classList.contains(targetPage))
+    })
+}
+
+function dialogButtonNextClick() {
+    if (dialogPage === 'first') {
+        switchDialogPage('second')
+        dialogButtonPrev.removeAttribute('data-target')
+        if(!colorValue) dialogButtonNext.disabled = true
+        dialogPage = 'second'
+        return
+    }
+
+    const target = dialogButtonNext.getAttribute('data-target')
+    components.forEach(el => {
+        const id = el.getAttribute('data-id')
+        el.classList.toggle('hidden', id !== target)
+    })
+    openGame()
+    dialog.close()
+}
+
+function dialogButtonPrevClick() {
+    if (dialogPage === 'first') return
+
+    switchDialogPage('first')
+    dialogButtonNext.disabled = false
+    dialogButtonPrev.setAttribute('data-target', 'choose')
+
+    dialogPage = 'first'
+}
+
+function playerSelectionChange(e) {
+    players = +e.target.value
+}
+
+function openGame(){
+
+    const nonPlayingPlayers = []
+    const playersObject = {
+        green: 'dice-green-and-player-green',
+        red: 'dice-red-and-player-red',
+        blue: 'dice-blue-and-player-blue',
+        yellow: 'dice-yellow-and-player-yellow'
+    }
+
+    if(players === 2) {
+        switch (colorValue) {
+            case 'blue':
+            case 'red':
+                nonPlayingPlayers.push(playersObject.green, playersObject.yellow)
+                break
+            case 'green':
+            case 'yellow':
+                nonPlayingPlayers.push(playersObject.blue, playersObject.red)
+                break
+        }
+
+        nonPlayingPlayers.forEach(player => {
+            const elem = document.querySelector(`.${player}`)
+            elem.style.visibility = 'hidden'
+        })
+
+    }
+
+    arrowReminder.forEach(elem => {
+        if(!elem.classList.contains(colorValue)) {
+            elem.style.visibility = 'hidden'
+        }
+    })
+}
+
 buttons.forEach(button => {
     button.addEventListener('click', screenSwitchClick)
+})
+
+dialogButtonPrev.addEventListener('click', dialogButtonPrevClick)
+
+dialogButtonNext.addEventListener('click', dialogButtonNextClick)
+
+colorOptions.forEach(option => {
+    option.addEventListener('change', selectColor)
+})
+
+playerSelection.forEach(elem => {
+    elem.addEventListener('change', playerSelectionChange)
 })

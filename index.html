@@ -42,7 +42,7 @@
                     </div>
                     <img class="img-devices" src="./img/devices.svg" alt="devices">
                 </div>
-                <button class="button-play" data-target="game">PLAY</button>
+                <button class="button-play" data-target="dialog">PLAY</button>
             </div>
             <div class="container-second-box-two">
                 <p>play against each other</p>
@@ -53,15 +53,56 @@
                     </div>
                     <img class="img-user" src="./img/user.svg" alt="user">
                 </div>
-                <button class="button-play" data-target="game">PLAY</button>
+                <button class="button-play" data-target="dialog">PLAY</button>
             </div>
         </section>
 
-        <main class="hidden" data-id="game">
-            <button class="button-back" data-target="choose">
-                <img src="./img/arrow-back.svg" alt="arrow back">
-            </button>
+        <dialog id="dialog">
+            <section class="dialog-players">
+                <div class="dialog-section-content first">
+                    <h3 class="dialog-title">SELECT PLAYERS</h3>
+                    <div class="player-options">
+                        <div class="option-item">
+                            <input type="radio" id="player-2" name="num-players" value="2" checked>
+                            <label for="player-2" class="option-label">2 PLAYERS</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="player-4" name="num-players" value="4">
+                            <label for="player-4" class="option-label">4 PLAYERS</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="dialog-section-content second hidden">
+                    <h3 class="dialog-title">SELECT YOUR COLOR</h3>
+                    <div class="color-options">
+                        <input type="radio" id="color-blue" name="color-option" value="blue">
+                        <label for="color-blue">
+                            <img src="./img/player-blue.svg" alt="player green">
+                        </label>
+                        <input type="radio" id="color-red" name="color-option" value="red">
+                        <label for="color-red">
+                            <img src="./img/player-red.svg" alt="player green">
+                        </label>
+                        <input type="radio" id="color-green" name="color-option" value="green">
+                        <label for="color-green">
+                            <img src="./img/player-green.svg" alt="player green">
+                        </label>
+                        <input type="radio" id="color-yellow" name="color-option" value="yellow">
+                        <label for="color-yellow">
+                            <img src="./img/player-yellow.svg" alt="player green">
+                        </label>
+                    </div>
+                </div>
+                <div class="dialog-section-footer">
+                    <button class="button-icon dialog-button-back" data-target="choose" id="dialog-prev">
+                        <img src="./img/round-arrow-back.svg" alt="round arrow back">
+                    </button>
+                    <button class="button-next" id="dialog-next">NEXT</button>
+                </div>
+            </section>
+        </dialog>
 
+        <main class="hidden" data-id="game">
             <section class="container-dice-top">
                 <div class="dice-green-and-player-green">
                     <div class="player-green">
@@ -75,12 +116,12 @@
                         <div class="side top"></div>
                         <div class="side button"></div>
                     </div>
-                    <div class="reminder-green">
+                    <div class="arrow-reminder green">
                         <img src="img/arrow-reminder-right.svg" alt="arrow reminder">
                     </div>
                 </div>
                 <div class="dice-red-and-player-red">
-                    <div class="reminder-red">
+                    <div class="arrow-reminder red">
                         <img src="img/arrow-reminder-left.svg" alt="arrow reminder">
                     </div>
                     <div class="dice">
@@ -147,12 +188,12 @@
                         <div class="side top"></div>
                         <div class="side button"></div>
                     </div>
-                    <div class="reminder-blue">
+                    <div class="arrow-reminder blue">
                         <img src="img/arrow-reminder-right.svg" alt="arrow reminder">
                     </div>
                 </div>
                 <div class="dice-yellow-and-player-yellow">
-                    <div class="reminder-yellow">
+                    <div class="reminder-yellow arrow-reminder yellow">
                         <img src="img/arrow-reminder-left.svg" alt="arrow reminder">
                     </div>
                     <div class="dice">
