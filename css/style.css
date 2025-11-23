@@ -503,10 +503,7 @@ main {
     perspective: 500px;
 }
 
-.dice-yellow-and-player-yellow,
-.dice-blue-and-player-blue,
-.dice-red-and-player-red,
-.dice-green-and-player-green {
+.container-player-and-dice {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -689,7 +686,6 @@ main {
     width: 645px;
     height: 645px;
     position: relative;
-    outline: 1px solid black;
     border-radius: 10px;
     display: grid;
     grid-template-columns: repeat(15, 43px);

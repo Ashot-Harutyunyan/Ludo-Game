@@ -11,6 +11,7 @@ const playerSelection = document.querySelectorAll('input[name="num-players"]')
 const arrowReminder = document.querySelectorAll('.arrow-reminder')
 const buttonExitTheGame = document.getElementById('exitTheGame')
 const buttonsYesOrNo = document.querySelectorAll('.dialog-quit-game-content-container-buttons button')
+const containerPlayerAndDice = document.querySelectorAll('.container-player-and-dice')
 
 const playAreaForFigures = [
     'top-left-green-play-area-for-figures',
@@ -217,30 +218,27 @@ function playerSelectionChange(e) {
 
 function openGame(){
 
-    const nonPlayingPlayers = []
-    const playersObject = {
-        green: 'dice-green-and-player-green',
-        red: 'dice-red-and-player-red',
-        blue: 'dice-blue-and-player-blue',
-        yellow: 'dice-yellow-and-player-yellow'
-    }
+    console.log(colorValue)
 
     if(players === 2) {
         switch (colorValue) {
             case 'blue':
             case 'red':
-                nonPlayingPlayers.push(playersObject.green, playersObject.yellow)
+                containerPlayerAndDice.forEach((el) => {
+                    if(el.classList.contains('green') || el.classList.contains('yellow')) {
+                        el.style.visibility = 'hidden'
+                    }
+                })
                 break
             case 'green':
             case 'yellow':
-                nonPlayingPlayers.push(playersObject.blue, playersObject.red)
+                containerPlayerAndDice.forEach((el) => {
+                    if(el.classList.contains('blue') || el.classList.contains('red')) {
+                        el.style.visibility = 'hidden'
+                    }
+                })
                 break
         }
-
-        nonPlayingPlayers.forEach(player => {
-            const elem = document.querySelector(`.${player}`)
-            elem.style.visibility = 'hidden'
-        })
 
     }
 
@@ -262,6 +260,9 @@ function initialStateDialogPlayers() {
     switchDialogPage('first')
     dialogPage = 'first'
     colorValue = undefined
+    players = 2
+    containerPlayerAndDice.forEach(elem => elem.style.visibility = '')
+    arrowReminder.forEach(elem => elem.style.visibility = '')
 }
 
 function changeDialogContent(component) {
