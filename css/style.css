@@ -23,6 +23,47 @@ dialog {
     background: #000000b3;
     overflow: hidden;
 }
+.dialog-quit-game {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dialog-quit-game-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.dialog-quit-game-content h2 {
+    font-family: 'Luckiest Guy', cursive, sans-serif;
+    font-size: 33px;
+    color: #FBC835;
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 8px rgba(255, 255, 0, 0.7);
+    letter-spacing: 4px;
+}
+.dialog-quit-game-content-container-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.dialog-quit-game-content-container-buttons button {
+    font-family: 'Luckiest Guy', cursive, sans-serif;
+    color: white;
+    background: linear-gradient(to bottom, #1a0033 0%, #000080 50%, #1a0033 100%);
+    border: 3px solid #FBC835;
+    padding:  16px 20px 11px 20px;
+    border-radius: 40px;
+    letter-spacing: 2px;
+    font-size: 20px;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0px 0px 8px rgba(255, 255, 0, 0.7);
+    cursor: pointer;
+}
 .dialog-players {
     width: 100%;
     height: 100%;
@@ -31,6 +72,7 @@ dialog {
     flex-direction: column;
     align-items: center;
 }
+.dialog-quit-game-content,
 .dialog-section-content {
     background: linear-gradient(to bottom, #1a0033 0%, #000080 50%, #1a0033 100%);
     border: 5px solid #FBC835;
@@ -39,6 +81,9 @@ dialog {
     width: 380px;
     max-width: 90%;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+.dialog-quit-game-content {
+    padding: 35px;
 }
 .dialog-title {
     font-family: 'Luckiest Guy', cursive, sans-serif;
@@ -114,6 +159,7 @@ dialog {
     margin-top: 15px;
     gap: 20px;
 }
+.main-button-back,
 .button-icon,
 .button-next {
     font-family: 'Luckiest Guy', cursive, sans-serif;
@@ -132,6 +178,7 @@ dialog {
             -1px  1px 0 #000,
             1px  1px 0 #000;
 }
+.main-button-back:active,
 .button-icon:active,
 .button-next:active {
     transform: scale(0.98);
@@ -152,6 +199,25 @@ dialog {
 .dialog-button-back img {
     width: clamp(25px, 30px, 35px);
     height: clamp(25px, 30px, 35px);
+}
+.main-button-back {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background: linear-gradient(to bottom, #1a0033 0%, #000080 50%, #1a0033 100%);
+    padding: 8px 15px;
+    border: 2px solid #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(255,255,255,0.3);
+}
+.main-button-back img {
+    width: 28px;
+    height: 28px;
 }
 .button-next {
     background: linear-gradient(to bottom, #1a0033 0%, #000080 50%, #1a0033 100%);
@@ -1109,6 +1175,14 @@ main {
         width: 30px;
         height: 30px;
     }
+    .main-button-back {
+        width: 45px;
+        height: 45px;
+    }
+    .main-button-back img {
+        width: 23px;
+        height: 23px;
+    }
 }
 @media (max-width: 500px) {
     main {
@@ -1294,5 +1368,13 @@ main {
     }
     .container-round-arrow img {
         width: 100%;
+    }
+    .main-button-back {
+        width: 35px;
+        height: 35px;
+    }
+    .main-button-back img {
+        width:  15px;
+        height: 15px;
     }
 }

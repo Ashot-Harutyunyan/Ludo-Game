@@ -2,12 +2,15 @@ const dice = document.querySelectorAll('.dice')
 const components = document.querySelectorAll('[data-id]')
 const buttons = document.querySelectorAll('[data-target]')
 const dialog = document.getElementById('dialog')
+const dialogComponents = dialog.querySelectorAll('section')
 const dialogButtonPrev = document.getElementById('dialog-prev')
 const dialogButtonNext = document.getElementById('dialog-next')
-const dialogComponents = document.querySelectorAll('.dialog-section-content')
+const dialogPlayersComponents = document.querySelectorAll('.dialog-section-content')
 const colorOptions = document.querySelectorAll('input[name="color-option"]')
 const playerSelection = document.querySelectorAll('input[name="num-players"]')
 const arrowReminder = document.querySelectorAll('.arrow-reminder')
+const buttonExitTheGame = document.getElementById('exitTheGame')
+const buttonsYesOrNo = document.querySelectorAll('.dialog-quit-game-content-container-buttons button')
 
 const playAreaForFigures = [
     'top-left-green-play-area-for-figures',
@@ -175,7 +178,7 @@ function selectColor(){
 }
 
 function switchDialogPage(targetPage) {
-    dialogComponents.forEach(el => {
+    dialogPlayersComponents.forEach(el => {
         el.classList.toggle('hidden', !el.classList.contains(targetPage))
     })
 }
@@ -248,6 +251,45 @@ function openGame(){
     })
 }
 
+function initialStateDialogPlayers() {
+    colorOptions.forEach(option => {
+        option.checked = false
+    })
+    playerSelection.forEach((elem, index) => {
+        if(index !== 0 ) elem.checked = false
+        else elem.checked = true
+    })
+    switchDialogPage('first')
+    dialogPage = 'first'
+    colorValue = undefined
+}
+
+function changeDialogContent(component) {
+    dialogComponents.forEach(elem => {
+        if (elem.classList.contains(component)) {
+            elem.classList.remove('hidden')
+        }else {
+            elem.classList.add('hidden')
+        }
+    })
+}
+
+function openModalQuitGame(){
+    dialog.showModal()
+    changeDialogContent('dialog-quit-game')
+}
+
+function quitGame() {
+    initialStateDialogPlayers()
+    changeDialogContent('dialog-players')
+    dialog.close()
+    currentScreen = 'start'
+    components.forEach(el => {
+        if(el.classList.contains('container-first')) el.classList.remove('hidden')
+        else el.classList.add('hidden')
+    })
+}
+
 buttons.forEach(button => {
     button.addEventListener('click', screenSwitchClick)
 })
@@ -262,4 +304,14 @@ colorOptions.forEach(option => {
 
 playerSelection.forEach(elem => {
     elem.addEventListener('change', playerSelectionChange)
+})
+
+buttonExitTheGame.addEventListener('click', openModalQuitGame)
+
+buttonsYesOrNo.forEach(button => {
+    if(button.textContent === 'Yes'){
+        button.addEventListener('click', quitGame)
+    }else {
+        button.addEventListener('click', ()=> dialog.close())
+    }
 })

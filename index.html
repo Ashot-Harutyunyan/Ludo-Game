@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
     <link rel="icon" href="./img/title-icon.png">
     <link rel="stylesheet" href="css/style.css">
-    <script defer src="js/script.js"></script>
 </head>
 <body>
 
@@ -100,9 +99,23 @@
                     <button class="button-next" id="dialog-next">NEXT</button>
                 </div>
             </section>
+            <section class="dialog-quit-game hidden">
+                <div class="dialog-quit-game-content">
+                    <h2>QUIT GAME?</h2>
+                    <div class="dialog-quit-game-content-container-buttons">
+                        <button id="quitGameYes">Yes</button>
+                        <button id="quitGameNo">No</button>
+                    </div>
+                </div>
+            </section>
         </dialog>
 
         <main class="hidden" data-id="game">
+
+            <button class="main-button-back" id="exitTheGame">
+                <img src="./img/round-arrow-back.svg" alt="round arrow back">
+            </button>
+
             <section class="container-dice-top">
                 <div class="dice-green-and-player-green">
                     <div class="player-green">
@@ -211,5 +224,6 @@
             </section>
         </main>
 
+        <script type="module" src="js/script.js"></script>
 </body>
 </html>
