@@ -27,22 +27,29 @@ const playArea = [
     'bottom-left-blue-play'
 ]
 
+const containerFigures = {}
+
 for (let i = 0; i < playAreaForFigures.length; i++) {
     let element = document.querySelector(`.${playAreaForFigures[i]}`)
     const classArray = element.className.split(' ')
     const colorElement = classArray[classArray.length - 1]
+    containerFigures[colorElement] = []
     for (let j = 0; j < 4; j++) {
         const div = document.createElement('div')
+        const container = document.createElement('div')
         const img = document.createElement('img')
         img.src = './img/star-sun.svg'
         img.classList.add(`img-star-sun-${j + 1}-${colorElement}`)
+        container.classList.add('container-player', colorElement)
         // img.classList.add(`active`)
-        div.appendChild(img)
+        container.appendChild(img)
         // div.textContent = j
         const player = document.createElement('img')
         player.src = `./img/player-${colorElement}.svg`
         player.classList.add(`img-player-${j + 1}-${colorElement}`)
-        div.appendChild(player)
+        container.appendChild(player)
+        div.appendChild(container)
+        containerFigures[colorElement].push(container)
         element.appendChild(div)
     }
 }
@@ -229,6 +236,7 @@ function openGame(){
                         el.style.visibility = 'hidden'
                     }
                 })
+                hideOrShowPlayers(['blue', 'red'])
                 break
             case 'green':
             case 'yellow':
@@ -237,9 +245,14 @@ function openGame(){
                         el.style.visibility = 'hidden'
                     }
                 })
+                hideOrShowPlayers(['green', 'yellow'])
                 break
         }
 
+    }
+
+    if(players === 4) {
+        hideOrShowPlayers(['blue', 'red', 'green', 'yellow'])
     }
 
     arrowReminder.forEach(elem => {
@@ -289,6 +302,19 @@ function quitGame() {
         if(el.classList.contains('container-first')) el.classList.remove('hidden')
         else el.classList.add('hidden')
     })
+}
+
+function hideOrShowPlayers(arr) {
+    for(let array in containerFigures) {
+        containerFigures[array].forEach(el => el.classList.add('hidden'))
+    }
+
+    if(arr){
+        for(let i = 0; i < arr.length; i++) {
+            const players = containerFigures[arr[i]];
+            players.forEach(player => player.classList.remove('hidden'));
+        }
+    }
 }
 
 buttons.forEach(button => {
