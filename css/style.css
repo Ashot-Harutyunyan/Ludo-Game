@@ -1058,6 +1058,10 @@ main {
         width: 30px;
         height: 30px;
     }
+    .top-left-green-play-area-for-figures div:not(.container-player),
+    .top-right-red-play-area-for-figures div:not(.container-player),
+    .bottom-left-blue-play-area-for-figures div:not(.container-player),
+    .bottom-right-yellow-play-area-for-figures div:not(.container-player),
     .top-left-green-play-area-for-figures div,
     .top-right-red-play-area-for-figures div,
     .bottom-left-blue-play-area-for-figures div,
@@ -1218,6 +1222,10 @@ main {
         width: 22px;
         height: 22px;
     }
+    .top-left-green-play-area-for-figures div:not(.container-player),
+    .top-right-red-play-area-for-figures div:not(.container-player),
+    .bottom-left-blue-play-area-for-figures div:not(.container-player),
+    .bottom-right-yellow-play-area-for-figures div:not(.container-player),
     .top-left-green-play-area-for-figures div,
     .top-right-red-play-area-for-figures div,
     .bottom-left-blue-play-area-for-figures div,

@@ -248,7 +248,6 @@ function openGame(){
                 hideOrShowPlayers(['green', 'yellow'])
                 break
         }
-
     }
 
     if(players === 4) {
