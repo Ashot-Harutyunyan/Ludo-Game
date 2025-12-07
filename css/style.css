@@ -262,7 +262,7 @@ dialog {
 }
 .color-options label img {
     width: 60px;
-    height: 60px;
+    height: 75px;
     z-index: 10;
 }
 .color-options label::after {
@@ -281,7 +281,7 @@ dialog {
 .color-options input[type="radio"]:checked + label::before {
     content: '';
     position: absolute;
-    top: 76px;
+    top: 90px;
     left: 24px;
     width: 6px;
     height: 18px;
@@ -515,7 +515,6 @@ main {
 .player-green,
 .player-red {
     width: 40px;
-    height: 40px;
     padding: 5px;
 }
 .player-blue img,
@@ -800,22 +799,33 @@ main {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    gap: 10px;
+    gap: 15px;
 }
 .top-left-green-play-area-for-figures div:not(.container-player),
 .top-right-red-play-area-for-figures div:not(.container-player),
 .bottom-left-blue-play-area-for-figures div:not(.container-player),
 .bottom-right-yellow-play-area-for-figures div:not(.container-player) {
     position: relative;
-    background-color: rgba(163, 161, 161, 0.37);
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     margin: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+}
+.top-left-green-play-area-for-figures div:not(.container-player) {
+    background-color: #6FCE66;
+}
+.top-right-red-play-area-for-figures div:not(.container-player) {
+    background-color: #EE3107;
+}
+.bottom-left-blue-play-area-for-figures div:not(.container-player) {
+    background-color: #0089D9;
+}
+.bottom-right-yellow-play-area-for-figures div:not(.container-player) {
+    background-color: #FED403;
 }
 
 .container-player {
@@ -974,9 +984,9 @@ main {
 .img-player-4-blue, .img-player-3-blue, .img-player-2-blue, .img-player-1-blue,
 .img-player-4-yellow, .img-player-3-yellow, .img-player-2-yellow, .img-player-1-yellow {
     width: 50px;
-    height: 50px;
+    height: 60px;
     position: absolute;
-    bottom: 18px;
+    bottom: 13px;
     cursor: pointer;
 }
 @keyframes animateBackground {
@@ -1050,6 +1060,7 @@ main {
     .bottom-left-blue-play-area-for-figures,
     .bottom-right-yellow-play-area-for-figures {
         padding: 15px;
+        gap: 10px;
     }
     .parent-1-blue div, .parent-2-blue div, .parent-3-blue div,
     .parent-1-red div, .parent-2-red div, .parent-3-red div,
@@ -1066,16 +1077,16 @@ main {
     .top-right-red-play-area-for-figures div,
     .bottom-left-blue-play-area-for-figures div,
     .bottom-right-yellow-play-area-for-figures div {
-        width: 40px;
-        height: 40px;
+        width: 35px;
+        height: 35px;
     }
     .img-player-4-red, .img-player-3-red, .img-player-2-red, .img-player-1-red,
     .img-player-4-green, .img-player-3-green, .img-player-2-green, .img-player-1-green,
     .img-player-4-blue, .img-player-3-blue, .img-player-2-blue, .img-player-1-blue,
     .img-player-4-yellow, .img-player-3-yellow, .img-player-2-yellow, .img-player-1-yellow {
         width: 40px;
-        height: 40px;
-        bottom: 15px;
+        height: 45px;
+        bottom: 10px;
     }
     .center {
         width: 90px;
@@ -1144,7 +1155,6 @@ main {
     .player-green,
     .player-red {
         width: 35px;
-        height: 35px;
     }
     .dice {
         width: 48px;
@@ -1214,6 +1224,7 @@ main {
     .bottom-left-blue-play-area-for-figures,
     .bottom-right-yellow-play-area-for-figures {
         padding: 10px;
+        gap: 8px;
     }
     .parent-1-blue div, .parent-2-blue div, .parent-3-blue div,
     .parent-1-red div, .parent-2-red div, .parent-3-red div,
@@ -1238,8 +1249,8 @@ main {
     .img-player-4-blue, .img-player-3-blue, .img-player-2-blue, .img-player-1-blue,
     .img-player-4-yellow, .img-player-3-yellow, .img-player-2-yellow, .img-player-1-yellow {
         width: 25px;
-        height: 25px;
-        bottom: 10px;
+        height: 35px;
+        bottom: 8px;
     }
     .center {
         width: 66px;
@@ -1308,7 +1319,6 @@ main {
     .player-green,
     .player-red {
         width: 25px;
-        height: 25px;
     }
     .dice {
         width: 38px;

@@ -1,12 +1,42 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg fill="#EE3107" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-	 width="800px" height="800px" viewBox="0 0 216.062 216.062"
-	 xml:space="preserve">
-<g>
-	<path d="M170.07,190.338v25.724H45.992v-25.724H170.07z M63.23,181.176h89.604v-25.723H63.23V181.176z M76.849,80.986v64.926
-		h62.368V80.986c9.41-8.505,15.344-20.779,15.344-34.454c0-25.7-20.823-46.533-46.529-46.533S61.499,20.833,61.499,46.533
-		C61.499,60.213,67.442,72.481,76.849,80.986z"/>
-</g>
+<svg width="256px" height="350px" viewBox="0 0 256 350" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="metallicGrad">
+            <stop stop-color="#F0F0F0" offset="0%"></stop>
+            <stop stop-color="#D0D0D0" offset="25%"></stop>
+            <stop stop-color="#FFFFFF" offset="50%"></stop>
+            <stop stop-color="#A0A0A0" offset="75%"></stop>
+            <stop stop-color="#707070" offset="100%"></stop>
+        </linearGradient>
+
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="strokeGrad">
+            <stop stop-color="#B0B0B0" offset="0%"></stop>
+            <stop stop-color="#606060" offset="100%"></stop>
+        </linearGradient>
+
+        <radialGradient cx="50%" cy="50%" fx="50%" fy="50%" r="50%" id="innerShadowGrad">
+            <stop stop-color="#000000" offset="60%"></stop>
+            <stop stop-color="#808080" offset="100%"></stop>
+        </radialGradient>
+
+        <radialGradient cx="50%" cy="50%" fx="50%" fy="50%" r="50%" id="redButtonGrad">
+            <stop stop-color="#E60000" offset="0%"></stop>
+            <stop stop-color="#B30000" offset="70%"></stop>
+            <stop stop-color="#660000" offset="100%"></stop>
+        </radialGradient>
+
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="glossHighlight">
+            <stop stop-color="#FFFFFF" stop-opacity="0.95" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.1" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+
+    <g id="Pin-Icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M128,10 C62.832,10 10,62.832 10,128 C10,178 55,235 128,340 C201,235 246,178 246,128 C246,62.832 193.168,10 128,10 Z" id="Outer-Frame" fill="url(#metallicGrad)" stroke="url(#strokeGrad)" stroke-width="3"></path>
+
+        <circle id="Inner-Cup-Shadow" fill="#EE3107" cx="128" cy="128" r="92"></circle>
+
+        <circle id="Red-Button-Base" fill="#EE3107" cx="128" cy="128" r="84"></circle>
+
+        <ellipse id="Gloss-Reflection" fill="url(#glossHighlight)" cx="128" cy="88" rx="65" ry="38"></ellipse>
+    </g>
 </svg>
