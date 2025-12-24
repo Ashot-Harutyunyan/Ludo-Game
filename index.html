@@ -12,218 +12,314 @@
 </head>
 <body>
 
-        <section class="container-first" data-id="start">
-            <div class="title-game">
-                <div class="title-game-ludo">
-                    <div><span>L</span></div>
-                    <div><span>U</span></div>
-                    <div><span>D</span></div>
-                    <div><span>O</span></div>
-                </div>
-                <p>KING</p>
-            </div>
-            <div class="container-first-img">
-                <img src="./img/title-icon.png" alt="logo">
-            </div>
-             <button class="button-play" data-target="choose">PLAY NOW</button>
-        </section>
+<section class="container-first" data-id="start">
+    <div class="title-game">
+        <div class="title-game-ludo">
+            <div><span>L</span></div>
+            <div><span>U</span></div>
+            <div><span>D</span></div>
+            <div><span>O</span></div>
+        </div>
+        <p>KING</p>
+    </div>
+    <div class="container-first-img">
+        <img src="./img/title-icon.png" alt="logo">
+    </div>
+    <button class="button-play" data-target="choose">PLAY NOW</button>
+</section>
 
-        <section class="container-second hidden" data-id="choose">
-            <button class="button-back" data-target="start">
-                <img src="./img/arrow-back.svg" alt="arrow back">
-            </button>
-            <div class="container-second-box-one">
-                <p>play against the computer</p>
-                <div class="container-user-devices">
-                    <img class="img-user" src="./img/user.svg" alt="user">
-                    <div class="container-round-arrow">
-                        <img src="img/round-arrow.svg" alt="round arrow">
-                    </div>
-                    <img class="img-devices" src="./img/devices.svg" alt="devices">
-                </div>
-                <button class="button-play" data-target="dialog">PLAY</button>
+<section class="container-second hidden" data-id="choose">
+    <button class="button-back" data-target="start">
+        <img src="./img/arrow-back.svg" alt="arrow back">
+    </button>
+    <div class="container-second-box-one">
+        <p>play against the computer</p>
+        <div class="container-user-devices">
+            <img class="img-user" src="./img/user.svg" alt="user">
+            <div class="container-round-arrow">
+                <img src="img/round-arrow.svg" alt="round arrow">
             </div>
-            <div class="container-second-box-two">
-                <p>play against each other</p>
-                <div class="container-users">
-                    <img class="img-user" src="./img/user.svg" alt="user">
-                    <div class="container-round-arrow">
-                        <img src="img/round-arrow.svg" alt="round arrow">
-                    </div>
-                    <img class="img-user" src="./img/user.svg" alt="user">
-                </div>
-                <button class="button-play" data-target="dialog">PLAY</button>
+            <img class="img-devices" src="./img/devices.svg" alt="devices">
+        </div>
+        <button class="button-play" data-target="dialog">PLAY</button>
+    </div>
+    <div class="container-second-box-two">
+        <p>play against each other</p>
+        <div class="container-users">
+            <img class="img-user" src="./img/user.svg" alt="user">
+            <div class="container-round-arrow">
+                <img src="img/round-arrow.svg" alt="round arrow">
             </div>
-        </section>
+            <img class="img-user" src="./img/user.svg" alt="user">
+        </div>
+        <button class="button-play" data-target="dialog">PLAY</button>
+    </div>
+</section>
 
-        <dialog id="dialog">
-            <section class="dialog-players">
-                <div class="dialog-section-content first">
-                    <h3 class="dialog-title">SELECT PLAYERS</h3>
-                    <div class="player-options">
-                        <div class="option-item">
-                            <input type="radio" id="player-2" name="num-players" value="2" checked>
-                            <label for="player-2" class="option-label">2 PLAYERS</label>
-                        </div>
-                        <div class="option-item">
-                            <input type="radio" id="player-4" name="num-players" value="4">
-                            <label for="player-4" class="option-label">4 PLAYERS</label>
-                        </div>
-                    </div>
+<dialog id="dialog">
+    <section class="dialog-players">
+        <div class="dialog-section-content first">
+            <h3 class="dialog-title">SELECT PLAYERS</h3>
+            <div class="player-options">
+                <div class="option-item">
+                    <input type="radio" id="player-2" name="num-players" value="2" checked>
+                    <label for="player-2" class="option-label">2 PLAYERS</label>
                 </div>
-                <div class="dialog-section-content second hidden">
-                    <h3 class="dialog-title">SELECT YOUR COLOR</h3>
-                    <div class="color-options">
-                        <input type="radio" id="color-blue" name="color-option" value="blue">
-                        <label for="color-blue">
-                            <img src="./img/player-blue.svg" alt="player green">
-                        </label>
-                        <input type="radio" id="color-red" name="color-option" value="red">
-                        <label for="color-red">
-                            <img src="./img/player-red.svg" alt="player green">
-                        </label>
-                        <input type="radio" id="color-green" name="color-option" value="green">
-                        <label for="color-green">
-                            <img src="./img/player-green.svg" alt="player green">
-                        </label>
-                        <input type="radio" id="color-yellow" name="color-option" value="yellow">
-                        <label for="color-yellow">
-                            <img src="./img/player-yellow.svg" alt="player green">
-                        </label>
-                    </div>
+                <div class="option-item">
+                    <input type="radio" id="player-4" name="num-players" value="4">
+                    <label for="player-4" class="option-label">4 PLAYERS</label>
                 </div>
-                <div class="dialog-section-footer">
-                    <button class="button-icon dialog-button-back" data-target="choose" id="dialog-prev">
-                        <img src="./img/round-arrow-back.svg" alt="round arrow back">
-                    </button>
-                    <button class="button-next" id="dialog-next">NEXT</button>
-                </div>
-            </section>
-            <section class="dialog-quit-game hidden">
-                <div class="dialog-quit-game-content">
-                    <h2>QUIT GAME?</h2>
-                    <div class="dialog-quit-game-content-container-buttons">
-                        <button id="quitGameYes">Yes</button>
-                        <button id="quitGameNo">No</button>
-                    </div>
-                </div>
-            </section>
-        </dialog>
-
-        <main class="hidden" data-id="game">
-
-            <button class="main-button-back" id="exitTheGame">
+            </div>
+        </div>
+        <div class="dialog-section-content second hidden">
+            <h3 class="dialog-title">SELECT YOUR COLOR</h3>
+            <div class="color-options">
+                <input type="radio" id="color-blue" name="color-option" value="blue">
+                <label for="color-blue">
+                    <img src="./img/player-blue.svg" alt="player green">
+                </label>
+                <input type="radio" id="color-red" name="color-option" value="red">
+                <label for="color-red">
+                    <img src="./img/player-red.svg" alt="player green">
+                </label>
+                <input type="radio" id="color-green" name="color-option" value="green">
+                <label for="color-green">
+                    <img src="./img/player-green.svg" alt="player green">
+                </label>
+                <input type="radio" id="color-yellow" name="color-option" value="yellow">
+                <label for="color-yellow">
+                    <img src="./img/player-yellow.svg" alt="player green">
+                </label>
+            </div>
+        </div>
+        <div class="dialog-section-footer">
+            <button class="button-icon dialog-button-back" data-target="choose" id="dialog-prev">
                 <img src="./img/round-arrow-back.svg" alt="round arrow back">
             </button>
+            <button class="button-next" id="dialog-next">NEXT</button>
+        </div>
+    </section>
+    <section class="dialog-quit-game hidden">
+        <div class="dialog-quit-game-content">
+            <h2>QUIT GAME?</h2>
+            <div class="dialog-quit-game-content-container-buttons">
+                <button id="quitGameYes">Yes</button>
+                <button id="quitGameNo">No</button>
+            </div>
+        </div>
+    </section>
+</dialog>
 
-            <section class="container-dice-top">
-                <div class="container-player-and-dice green">
-                    <div class="player-green">
-                        <img src="./img/player-green.svg" alt="player green">
-                    </div>
-                    <div class="dice">
-                        <div class="side front"></div>
-                        <div class="side back"></div>
-                        <div class="side left"></div>
-                        <div class="side right"></div>
-                        <div class="side top"></div>
-                        <div class="side button"></div>
-                    </div>
-                    <div class="arrow-reminder green">
-                        <img src="img/arrow-reminder-right.svg" alt="arrow reminder">
-                    </div>
-                </div>
-                <div class="container-player-and-dice red">
-                    <div class="arrow-reminder red">
-                        <img src="img/arrow-reminder-left.svg" alt="arrow reminder">
-                    </div>
-                    <div class="dice">
-                        <div class="side front"></div>
-                        <div class="side back"></div>
-                        <div class="side left"></div>
-                        <div class="side right"></div>
-                        <div class="side top"></div>
-                        <div class="side button"></div>
-                    </div>
-                    <div class="player-red">
-                        <img src="./img/player-red.svg" alt="player red">
-                    </div>
-                </div>
-            </section>
+<main class="hidden" data-id="game">
 
-            <section class="container">
-                <section class="top-left-green">
-                    <div class="top-left-green-play-area-for-figures green"></div>
-                </section>
-                <div class="top-right-red-play-area red">
-                    <img class="arrow-red" src="./img/arrow-red.svg" alt="arrow red">
-                    <img class="icon-red" src="./img/star.svg" alt="star icon">
-                </div>
-                <section class="top-right-red">
-                    <div class="top-right-red-play-area-for-figures red"></div>
-                </section>
-                <div class="center-left-green-play-area green">
-                    <img class="arrow-green" src="./img/arrow-green.svg" alt="arrow green">
-                    <img class="icon-green" src="./img/star.svg" alt="star icon">
-                </div>
-                <div class="center">
-                    <div class="center-red"></div>
-                    <div class="center-yellow"></div>
-                    <div class="center-blue"></div>
-                    <div class="center-green"></div>
-                </div>
-                <div class="center-right-yellow-play yellow">
-                    <img class="arrow-yellow" src="./img/arrow-yellow.svg" alt="arrow yellow">
-                    <img class="icon-yellow" src="./img/star.svg" alt="star icon">
-                </div>
-                <section class="bottom-left-blue">
-                    <div class="bottom-left-blue-play-area-for-figures blue"></div>
-                </section>
-                <div class="bottom-left-blue-play blue">
-                    <img class="arrow-blue" src="./img/arrow-blue.svg" alt="arrow blue">
-                    <img class="icon-blue" src="./img/star.svg" alt="star icon">
-                </div>
-                <section class="bottom-right-yellow">
-                    <div class="bottom-right-yellow-play-area-for-figures yellow"></div>
-                </section>
-            </section>
+    <button class="main-button-back" id="exitTheGame">
+        <img src="./img/round-arrow-back.svg" alt="round arrow back">
+    </button>
 
-            <section class="container-dice-bottom">
-                <div class="container-player-and-dice blue">
-                    <div class="player-blue">
-                        <img src="./img/player-blue.svg" alt="player blue">
-                    </div>
-                    <div class="dice">
-                        <div class="side front"></div>
-                        <div class="side back"></div>
-                        <div class="side left"></div>
-                        <div class="side right"></div>
-                        <div class="side top"></div>
-                        <div class="side button"></div>
-                    </div>
-                    <div class="arrow-reminder blue">
-                        <img src="img/arrow-reminder-right.svg" alt="arrow reminder">
-                    </div>
-                </div>
-                <div class="container-player-and-dice yellow">
-                    <div class="reminder-yellow arrow-reminder yellow">
-                        <img src="img/arrow-reminder-left.svg" alt="arrow reminder">
-                    </div>
-                    <div class="dice">
-                        <div class="side front"></div>
-                        <div class="side back"></div>
-                        <div class="side left"></div>
-                        <div class="side right"></div>
-                        <div class="side top"></div>
-                        <div class="side button"></div>
-                    </div>
-                    <div class="player-yellow">
-                        <img src="./img/player-yellow.svg" alt="player yellow">
-                    </div>
-                </div>
-            </section>
-        </main>
+    <section class="container-dice-top">
+        <div class="container-player-and-dice green">
+            <div class="player-green">
+                <img src="./img/player-green.svg" alt="player green">
+            </div>
+            <div class="dice">
+                <div class="side front"></div>
+                <div class="side back"></div>
+                <div class="side left"></div>
+                <div class="side right"></div>
+                <div class="side top"></div>
+                <div class="side button"></div>
+            </div>
+            <div class="arrow-reminder green">
+                <img src="img/arrow-reminder-right.svg" alt="arrow reminder">
+            </div>
+        </div>
+        <div class="container-player-and-dice red">
+            <div class="arrow-reminder red">
+                <img src="img/arrow-reminder-left.svg" alt="arrow reminder">
+            </div>
+            <div class="dice">
+                <div class="side front"></div>
+                <div class="side back"></div>
+                <div class="side left"></div>
+                <div class="side right"></div>
+                <div class="side top"></div>
+                <div class="side button"></div>
+            </div>
+            <div class="player-red">
+                <img src="./img/player-red.svg" alt="player red">
+            </div>
+        </div>
+    </section>
 
-        <script type="module" src="js/script.js"></script>
+    <section class="container">
+        <section class="top-left-green">
+            <div class="top-left-green-play-area-for-figures green"></div>
+        </section>
+        <div class="top-right-red-play-area red">
+            <img class="arrow-red" src="./img/arrow-red.svg" alt="arrow red">
+            <img class="icon-red" src="./img/star.svg" alt="star icon">
+            <div class="parent-1-red">
+                <div class="child-1-red" id="g11"></div>
+                <div class="child-1-red" id="g10"></div>
+                <div class="child-1-red" id="g9"></div>
+                <div class="child-1-red" id="g8"></div>
+                <div class="child-1-red" id="g7"></div>
+                <div class="child-1-red" id="g6"></div>
+            </div>
+            <div class="parent-2-red">
+                <div class="child-2-red" id="g12"></div>
+                <div class="child-2-red" id="rh1"></div>
+                <div class="child-2-red" id="rh2"></div>
+                <div class="child-2-red" id="rh3"></div>
+                <div class="child-2-red" id="rh4"></div>
+                <div class="child-2-red" id="rh5"></div>
+            </div>
+            <div class="parent-3-red">
+                <div class="child-3-red" id="g13"></div>
+                <div class="child-3-red" id="r1"></div>
+                <div class="child-3-red" id="r2"></div>
+                <div class="child-3-red" id="r3"></div>
+                <div class="child-3-red" id="r4"></div>
+                <div class="child-3-red" id="r5"></div>
+            </div>
+        </div>
+        <section class="top-right-red">
+            <div class="top-right-red-play-area-for-figures red"></div>
+        </section>
+        <div class="center-left-green-play-area green">
+            <img class="arrow-green" src="./img/arrow-green.svg" alt="arrow green">
+            <img class="icon-green" src="./img/star.svg" alt="star icon">
+            <div class="parent-1-green">
+                <div class="child-1-green" id="b13"></div>
+                <div class="child-1-green" id="g1"></div>
+                <div class="child-1-green" id="g2"></div>
+                <div class="child-1-green" id="g3"></div>
+                <div class="child-1-green" id="g4"></div>
+                <div class="child-1-green" id="g5"></div>
+            </div>
+            <div class="parent-2-green">
+                <div class="child-2-green" id="b12"></div>
+                <div class="child-2-green" id="gh1"></div>
+                <div class="child-2-green" id="gh2"></div>
+                <div class="child-2-green" id="gh3"></div>
+                <div class="child-2-green" id="gh4"></div>
+                <div class="child-2-green" id="gh5"></div>
+            </div>
+            <div class="parent-3-green">
+                <div class="child-3-green" id="b11"></div>
+                <div class="child-3-green" id="b10"></div>
+                <div class="child-3-green" id="b9"></div>
+                <div class="child-3-green" id="b8"></div>
+                <div class="child-3-green" id="b7"></div>
+                <div class="child-3-green" id="b6"></div>
+            </div>
+        </div>
+        <div class="center">
+            <div class="center-red"><div id="home_red"></div></div>
+            <div class="center-yellow"><div id="home_yellow"></div></div>
+            <div class="center-blue"><div id="home_blue"></div></div>
+            <div class="center-green"><div id="home_green"></div></div>
+        </div>
+        <div class="center-right-yellow-play yellow">
+            <img class="arrow-yellow" src="./img/arrow-yellow.svg" alt="arrow yellow">
+            <img class="icon-yellow" src="./img/star.svg" alt="star icon">
+            <div class="parent-1-yellow">
+                <div class="child-1-yellow" id="r6"></div>
+                <div class="child-1-yellow" id="r7"></div>
+                <div class="child-1-yellow" id="r8"></div>
+                <div class="child-1-yellow" id="r9"></div>
+                <div class="child-1-yellow" id="r10"></div>
+                <div class="child-1-yellow" id="r11"></div>
+            </div>
+            <div class="parent-2-yellow">
+                <div class="child-2-yellow" id="yh5"></div>
+                <div class="child-2-yellow" id="yh4"></div>
+                <div class="child-2-yellow" id="yh3"></div>
+                <div class="child-2-yellow" id="yh2"></div>
+                <div class="child-2-yellow" id="yh1"></div>
+                <div class="child-2-yellow" id="r12"></div>
+            </div>
+            <div class="parent-3-yellow">
+                <div class="child-3-yellow" id="y5"></div>
+                <div class="child-3-yellow" id="y4"></div>
+                <div class="child-3-yellow" id="y3"></div>
+                <div class="child-3-yellow" id="y2"></div>
+                <div class="child-3-yellow" id="y1"></div>
+                <div class="child-3-yellow" id="r13"></div>
+            </div>
+        </div>
+        <section class="bottom-left-blue">
+            <div class="bottom-left-blue-play-area-for-figures blue"></div>
+        </section>
+        <div class="bottom-left-blue-play blue">
+            <img class="arrow-blue" src="./img/arrow-blue.svg" alt="arrow blue">
+            <img class="icon-blue" src="./img/star.svg" alt="star icon">
+            <div class="parent-1-blue">
+                <div class="child-1-blue" id="b5"></div>
+                <div class="child-1-blue" id="b4"></div>
+                <div class="child-1-blue" id="b3"></div>
+                <div class="child-1-blue" id="b2"></div>
+                <div class="child-1-blue" id="b1"></div>
+                <div class="child-1-blue" id="y13"></div>
+            </div>
+            <div class="parent-2-blue">
+                <div class="child-2-blue" id="bh5"></div>
+                <div class="child-2-blue" id="bh4"></div>
+                <div class="child-2-blue" id="bh3"></div>
+                <div class="child-2-blue" id="bh2"></div>
+                <div class="child-2-blue" id="bh1"></div>
+                <div class="child-2-blue" id="y12"></div>
+            </div>
+            <div class="parent-3-blue">
+                <div class="child-3-blue" id="y6"></div>
+                <div class="child-3-blue" id="y7"></div>
+                <div class="child-3-blue" id="y8"></div>
+                <div class="child-3-blue" id="y9"></div>
+                <div class="child-3-blue" id="y10"></div>
+                <div class="child-3-blue" id="y11"></div>
+            </div>
+        </div>
+        <section class="bottom-right-yellow">
+            <div class="bottom-right-yellow-play-area-for-figures yellow"></div>
+        </section>
+    </section>
+
+    <section class="container-dice-bottom">
+        <div class="container-player-and-dice blue">
+            <div class="player-blue">
+                <img src="./img/player-blue.svg" alt="player blue">
+            </div>
+            <div class="dice">
+                <div class="side front"></div>
+                <div class="side back"></div>
+                <div class="side left"></div>
+                <div class="side right"></div>
+                <div class="side top"></div>
+                <div class="side button"></div>
+            </div>
+            <div class="arrow-reminder blue">
+                <img src="img/arrow-reminder-right.svg" alt="arrow reminder">
+            </div>
+        </div>
+        <div class="container-player-and-dice yellow">
+            <div class="reminder-yellow arrow-reminder yellow">
+                <img src="img/arrow-reminder-left.svg" alt="arrow reminder">
+            </div>
+            <div class="dice">
+                <div class="side front"></div>
+                <div class="side back"></div>
+                <div class="side left"></div>
+                <div class="side right"></div>
+                <div class="side top"></div>
+                <div class="side button"></div>
+            </div>
+            <div class="player-yellow">
+                <img src="./img/player-yellow.svg" alt="player yellow">
+            </div>
+        </div>
+    </section>
+</main>
+
+<script type="module" src="./js/main.js"></script>
 </body>
 </html>

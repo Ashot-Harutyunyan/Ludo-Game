@@ -1,0 +1,93 @@
+import { DICE_FACES } from './constants.js';
+
+/**
+ * Creates dots on the face of a cube
+ * @param {number} number - number of points
+ * @param {HTMLElement} parent - parent element
+ */
+export function createDiceDots(number, parent) {
+    for (let i = 0; i < number; i++) {
+        const div = document.createElement('div');
+        parent.appendChild(div);
+    }
+}
+
+/**
+ * Initializes all faces of the cube
+ * @param {HTMLElement} diceElement - cube element
+ */
+export function initializeDice(diceElement) {
+    const faces = Array.from(diceElement.children);
+
+    faces.forEach((face) => {
+        const faceName = face.className.split(' ')[1];
+
+        switch (faceName) {
+            case 'front':
+                createDiceDots(DICE_FACES.FRONT, face);
+                break;
+            case 'back':
+                createDiceDots(DICE_FACES.BACK, face);
+                break;
+            case 'left':
+                createDiceDots(DICE_FACES.LEFT, face);
+                break;
+            case 'right':
+                createDiceDots(DICE_FACES.RIGHT, face);
+                break;
+            case 'top':
+                createDiceDots(DICE_FACES.TOP, face);
+                break;
+            case 'button':
+                createDiceDots(DICE_FACES.BOTTOM, face);
+                break;
+        }
+    });
+}
+
+/**
+ * Rolls a die and returns the result
+ * @param {HTMLElement} diceElement - cube element
+ * @returns {number} throw result (1-6)
+ */
+export function rollDice(diceElement) {
+    const random = Math.floor(Math.random() * 6) + 1;
+
+    // Resetting and restarting animation
+    diceElement.style.animation = 'none';
+    void diceElement.offsetWidth;
+    diceElement.style.animation = 'cube .5s linear';
+
+    // Setting the cube position depending on the result
+    applyDiceTransform(diceElement, random);
+
+    return random;
+}
+
+/**
+ * Applies a transformation to the dice depending on the number rolled
+ * @param {HTMLElement} diceElement - cube element
+ * @param {number} value - value (1-6)
+ */
+function applyDiceTransform(diceElement, value) {
+    const transforms = {
+        1: 'rotateY(0deg) rotateX(0deg)',
+        2: 'rotateY(270deg) rotateX(0deg)',
+        3: 'rotateY(180deg) rotateX(0deg)',
+        4: 'rotateY(90deg) rotateX(0deg)',
+        5: 'rotateY(0deg) rotateX(270deg)',
+        6: 'rotateY(0deg) rotateX(90deg)'
+    };
+
+    diceElement.style.transform = transforms[value];
+}
+
+/**
+ * Cube click handler
+ * @param {Event} event - click event
+ * @returns {number} result of the throw
+ */
+export function handleDiceClick(event) {
+    const diceElement = event.currentTarget;
+    return rollDice(diceElement);
+}
