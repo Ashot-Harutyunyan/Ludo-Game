@@ -761,73 +761,81 @@ main {
     justify-content: center;
 }
 #home_red .container-player:nth-child(1) {
-    transform: rotate(-90deg) translate(-5px, -23px) scale(0.5);
+    transform: rotate(-90deg) translate(1px, -23px) scale(0.5);
 }
 #home_red .container-player:nth-child(2) {
     transform: rotate(-90deg) translate(10px, -23px) scale(0.5);
 }
 #home_red .container-player:nth-child(3) {
-    transform: rotate(-90deg) translate(-23px, -23px) scale(0.5);
+    transform: rotate(-90deg) translate(-9px, -23px) scale(0.5);
+    position: relative;
+    z-index: -1;
 }
 #home_red .container-player:nth-child(4) {
-    transform: rotate(-90deg) translate(23px, -23px) scale(0.5);
+    transform: rotate(-90deg) translate(19px, -23px) scale(0.5);
 }
 #home_yellow {
     width: 100%;
     height: 50%;
-    transform: rotate(45deg) translate(24px, 82px);
+    transform: rotate(-45deg) translate(-65px, 24px);
     display: flex;
     justify-content: center;
 }
 #home_yellow .container-player:nth-child(1) {
-    transform: translate(-13px, -7px) scale(0.5)
+    transform: translate(-13px, 3px) scale(0.5);
 }
 #home_yellow .container-player:nth-child(2) {
-    transform: translate(0px, -7px) scale(0.5);
+    transform: translate(-5px, 3px) scale(0.5);
 }
 #home_yellow .container-player:nth-child(3) {
-    transform: translate(-26px, -7px) scale(0.5);
+    transform: translate(-21px, 3px) scale(0.5);
+    position: relative;
+    z-index: -1;
 }
 #home_yellow .container-player:nth-child(4) {
-    transform: translate(16px, -7px) scale(0.5);
+    transform: translate(1px, 3px) scale(0.5);
 }
 #home_blue {
     width: 50%;
     height: 100%;
-    transform: rotate(45deg) translate(-33px, -22px);
+    transform: rotate(225deg) translate(20px, 24px);
     display: flex;
     justify-content: center;
 }
 #home_blue .container-player:nth-child(1) {
-    transform: rotate(90deg) translate(-6px, -18px) scale(0.5);
+    transform: rotate(90deg) translate(-1px, -18px) scale(0.5);
 }
 #home_blue .container-player:nth-child(2) {
     transform: rotate(90deg) translate(8px, -18px) scale(0.5);
 }
 #home_blue .container-player:nth-child(3) {
-    transform: rotate(90deg) translate(-21px, -18px) scale(0.5);
+    transform: rotate(90deg) translate(-9px, -18px) scale(0.5);
+    position: relative;
+    z-index: -1;
 }
 #home_blue .container-player:nth-child(4) {
-    transform: rotate(90deg) translate(20px, -18px) scale(0.5);
+    transform: rotate(90deg) translate(15px, -18px) scale(0.5);
 }
 #home_green {
     width: 100%;
     height: 50%;
-    transform: rotate(45deg) translate(24px, -34px);
+    transform: rotate(135deg) translate(-18px, -24px);
     display: flex;
     justify-content: center;
 }
 #home_green .container-player:nth-child(1) {
-    transform: rotate(-180deg) translate(-4px, -8px) scale(0.5);
+    transform: rotate(-180deg) translate(5px, 3px) scale(0.5);
 }
 #home_green .container-player:nth-child(2) {
-    transform: rotate(-180deg) translate(12px, -8px) scale(0.5);
+    transform: rotate(-180deg) translate(13px, 3px) scale(0.5);
 }
 #home_green .container-player:nth-child(3) {
-    transform: rotate(-180deg) translate(27px, -8px) scale(0.5);
+    transform: rotate(-180deg) translate(21px, 3px) scale(0.5);
 }
 #home_green .container-player:nth-child(4) {
-    transform: rotate(-180deg) translate(-19px, -8px) scale(0.5);
+    transform: rotate(-180deg) translate(-2px, 3px) scale(0.5);
+    position: relative;
+    z-index: -1;
 }
 #home_green .container-player,
 #home_blue .container-player,
@@ -958,6 +966,14 @@ main {
     position: absolute;
     width: 30px;
     height: 30px;
+}
+.top-right-red-play-area .container-player img:nth-child(2),
+.center-left-green-play-area .container-player img:nth-child(2),
+.center-right-yellow-play .container-player img:nth-child(2),
+.bottom-left-blue-play .container-player img:nth-child(2) {
+    position: absolute;
+    width: 30px;
+    height: 50px;
 }
 .arrow-green {
     top: 50px;
@@ -1214,6 +1230,13 @@ main {
         width: 20px;
         height: 20px;
     }
+    .top-right-red-play-area .container-player img:nth-child(2),
+    .center-left-green-play-area .container-player img:nth-child(2),
+    .center-right-yellow-play .container-player img:nth-child(2),
+    .bottom-left-blue-play .container-player img:nth-child(2) {
+        width: 20px;
+        height: 32px;
+    }
     .arrow-green {
         top: 35px;
         left: 3px;
@@ -1300,61 +1323,61 @@ main {
         transform: rotate(45deg) translate(64px, -15px);
     }
     #home_red .container-player:nth-child(1){
-        transform: rotate(-90deg) translate(-4px, -21px) scale(0.4);
+        transform: rotate(-90deg) translate(1px, -21px) scale(0.4);
     }
     #home_red .container-player:nth-child(2){
-        transform: rotate(-90deg) translate(6px, -21px) scale(0.4);
+        transform: rotate(-90deg) translate(7px, -21px) scale(0.4);
     }
     #home_red .container-player:nth-child(3){
-        transform: rotate(-90deg) translate(-15px, -21px) scale(0.4);
+        transform: rotate(-90deg) translate(-5px, -21px) scale(0.4);
     }
     #home_red .container-player:nth-child(4){
-        transform: rotate(-90deg) translate(17px, -21px) scale(0.4);
+        transform: rotate(-90deg) translate(13px, -21px) scale(0.4);
     }
     #home_yellow {
-        transform: rotate(45deg) translate(18px, 60px);
+        transform: rotate(-45deg) translate(-46px, 16px);
     }
     #home_yellow .container-player:nth-child(1) {
-        transform: translate(-10px, -7px) scale(0.4);
+        transform: translate(-8px, 3px) scale(0.4);
     }
     #home_yellow .container-player:nth-child(2) {
-        transform: translate(-1px, -7px) scale(0.4);
+        transform: translate(-2px, 3px) scale(0.4);
     }
     #home_yellow .container-player:nth-child(3) {
-        transform: translate(-20px, -7px) scale(0.4);
+        transform: translate(-14px, 3px) scale(0.4);
     }
     #home_yellow .container-player:nth-child(4) {
-        transform: translate(10px, -7px) scale(0.4);
+        transform: translate(3px, 3px) scale(0.4);
     }
     #home_blue {
-        transform: rotate(45deg) translate(-27px, -15px);
+        transform: rotate(225deg) translate(4px, 15px);
     }
     #home_blue .container-player:nth-child(1) {
-        transform: rotate(90deg) translate(-6px, -15px) scale(0.4);
+        transform: rotate(90deg) translate(2px, -18px) scale(0.4);
     }
     #home_blue .container-player:nth-child(2) {
-        transform: rotate(90deg) translate(5px, -15px) scale(0.4);
+        transform: rotate(90deg) translate(8px, -18px) scale(0.4);
     }
     #home_blue .container-player:nth-child(3) {
-        transform: rotate(90deg) translate(16px, -15px) scale(0.4);
+        transform: rotate(90deg) translate(-4px, -18px) scale(0.4);
     }
     #home_blue .container-player:nth-child(4) {
-        transform: rotate(90deg) translate(-18px, -15px) scale(0.4);
+        transform: rotate(90deg) translate(12px, -18px) scale(0.4);
     }
     #home_green {
-        transform: rotate(45deg) translate(16px, -27px);
+        transform: rotate(135deg) translate(-18px, -17px);
     }
     #home_green .container-player:nth-child(1) {
-        transform: rotate(-180deg) translate(-2px, -6px) scale(0.4);
+        transform: rotate(-180deg) translate(1px, 2px) scale(0.4);
     }
     #home_green .container-player:nth-child(2) {
-        transform: rotate(-180deg) translate(9px, -6px) scale(0.4);
+        transform: rotate(-180deg) translate(6px, 2px) scale(0.4);
     }
     #home_green .container-player:nth-child(3) {
-        transform: rotate(-180deg) translate(19px, -6px) scale(0.4);
+        transform: rotate(-180deg) translate(11px, 2px) scale(0.4);
     }
     #home_green .container-player:nth-child(4) {
-        transform: rotate(-180deg) translate(-13px, -6px) scale(0.4);
+        transform: rotate(-180deg) translate(-4px, 2px) scale(0.4);
     }
 }
 @media (max-width: 500px) {
@@ -1444,6 +1467,13 @@ main {
     .bottom-left-blue-play img {
         width: 15px;
         height: 15px;
+    }
+    .top-right-red-play-area .container-player img:nth-child(2),
+    .center-left-green-play-area .container-player img:nth-child(2),
+    .center-right-yellow-play .container-player img:nth-child(2),
+    .bottom-left-blue-play .container-player img:nth-child(2) {
+        width: 15px;
+        height: 24px;
     }
     .arrow-green {
         top: 25px;
@@ -1565,60 +1595,60 @@ main {
         transform: rotate(45deg) translate(55px, -10px);
     }
     #home_red .container-player:nth-child(1){
-        transform: rotate(-90deg) translate(-3px, -23px) scale(0.4);
+        transform: rotate(-90deg) translate(2px, -23px) scale(0.4);
     }
     #home_red .container-player:nth-child(2){
-        transform: rotate(-90deg) translate(5px, -23px) scale(0.4);
+        transform: rotate(-90deg) translate(6px, -23px) scale(0.4);
     }
     #home_red .container-player:nth-child(3){
-        transform: rotate(-90deg) translate(-11px, -23px) scale(0.4);
+        transform: rotate(-90deg) translate(-3px, -23px) scale(0.4);
     }
     #home_red .container-player:nth-child(4){
-        transform: rotate(-90deg) translate(12px, -23px) scale(0.4);
+        transform: rotate(-90deg) translate(10px, -23px) scale(0.4);
     }
     #home_yellow {
-        transform: rotate(45deg) translate(12px, 46px);
+        transform: rotate(-45deg) translate(-33px, 12px);
     }
     #home_yellow .container-player:nth-child(1) {
-        transform: translate(-5px, -7px) scale(0.4);
+        transform: translate(-8px, 3px) scale(0.4);
     }
     #home_yellow .container-player:nth-child(2) {
-        transform: translate(3px, -7px) scale(0.4);
+        transform: translate(-4px, 3px) scale(0.4);
     }
     #home_yellow .container-player:nth-child(3) {
-        transform: translate(-14px, -7px) scale(0.4);
+        transform: translate(-12px, 3px) scale(0.4);
     }
     #home_yellow .container-player:nth-child(4) {
-        transform: translate(12px, -7px) scale(0.4);
+        transform: translate(0px, 3px) scale(0.4);
     }
     #home_blue {
-        transform: rotate(45deg) translate(-19px, -12px);
+        transform: rotate(225deg) translate(-4px, 11px);
     }
     #home_blue .container-player:nth-child(1) {
-        transform: rotate(90deg) translate(-5px, -10px) scale(0.4);
+        transform: rotate(90deg) translate(2px, -18px) scale(0.4);
     }
     #home_blue .container-player:nth-child(2) {
-        transform: rotate(90deg) translate(3px, -10px) scale(0.4);
+        transform: rotate(90deg) translate(6px, -18px) scale(0.4);
     }
     #home_blue .container-player:nth-child(3) {
-        transform: rotate(90deg) translate(11px, -10px) scale(0.4);
+        transform: rotate(90deg) translate(-3px, -18px) scale(0.4);
     }
     #home_blue .container-player:nth-child(4) {
-        transform: rotate(90deg) translate(-13px, -10px) scale(0.4);
+        transform: rotate(90deg) translate(10px, -18px) scale(0.4);
     }
     #home_green {
-        transform: rotate(45deg) translate(12px, -18px);
+        transform: rotate(135deg) translate(-18px, -11px);
     }
     #home_green .container-player:nth-child(1) {
-        transform: rotate(-180deg) translate(-2px, -2px) scale(0.4);
+        transform: rotate(-180deg) translate(-4px, 4px) scale(0.4);
     }
     #home_green .container-player:nth-child(2) {
-        transform: rotate(-180deg) translate(6px, -2px) scale(0.4);
+        transform: rotate(-180deg) translate(0px, 4px) scale(0.4);
     }
     #home_green .container-player:nth-child(3) {
-        transform: rotate(-180deg) translate(14px, -2px) scale(0.4);
+        transform: rotate(-180deg) translate(4px, 4px) scale(0.4);
     }
     #home_green .container-player:nth-child(4) {
-        transform: rotate(-180deg) translate(-11px, -2px) scale(0.4);
+        transform: rotate(-180deg) translate(-8px, 4px) scale(0.4);
     }
 }
