@@ -1032,6 +1032,7 @@ main {
 .parent-1-green div.container-player, .parent-2-green div.container-player, .parent-3-green div.container-player {
     position: relative;
     outline: none;
+    z-index: 1;
 }
 .child-2-red {
     background-color: #EE3107;

@@ -103,8 +103,8 @@
         <div class="dialog-quit-game-content">
             <h2>QUIT GAME?</h2>
             <div class="dialog-quit-game-content-container-buttons">
-                <button id="quitGameYes">Yes</button>
-                <button id="quitGameNo">No</button>
+                <button>Yes</button>
+                <button>No</button>
             </div>
         </div>
     </section>
@@ -121,7 +121,7 @@
             <div class="player-green">
                 <img src="./img/player-green.svg" alt="player green">
             </div>
-            <div class="dice">
+            <div class="dice" data-dice-move="green">
                 <div class="side front"></div>
                 <div class="side back"></div>
                 <div class="side left"></div>
@@ -137,7 +137,7 @@
             <div class="arrow-reminder red">
                 <img src="img/arrow-reminder-left.svg" alt="arrow reminder">
             </div>
-            <div class="dice">
+            <div class="dice" data-dice-move="red">
                 <div class="side front"></div>
                 <div class="side back"></div>
                 <div class="side left"></div>
@@ -159,28 +159,28 @@
             <img class="arrow-red" src="./img/arrow-red.svg" alt="arrow red">
             <img class="icon-red" src="./img/star.svg" alt="star icon">
             <div class="parent-1-red">
-                <div class="child-1-red" id="g11"></div>
-                <div class="child-1-red" id="g10"></div>
-                <div class="child-1-red" id="g9"></div>
-                <div class="child-1-red" id="g8"></div>
-                <div class="child-1-red" id="g7"></div>
-                <div class="child-1-red" id="g6"></div>
+                <div class="child-1-red playing-field" id="g11"></div>
+                <div class="child-1-red playing-field" id="g10"></div>
+                <div class="child-1-red playing-field" id="g9"></div>
+                <div class="child-1-red playing-field" id="g8"></div>
+                <div class="child-1-red playing-field" id="g7"></div>
+                <div class="child-1-red playing-field" id="g6"></div>
             </div>
             <div class="parent-2-red">
-                <div class="child-2-red" id="g12"></div>
-                <div class="child-2-red" id="rh1"></div>
-                <div class="child-2-red" id="rh2"></div>
-                <div class="child-2-red" id="rh3"></div>
-                <div class="child-2-red" id="rh4"></div>
-                <div class="child-2-red" id="rh5"></div>
+                <div class="child-2-red playing-field" id="g12"></div>
+                <div class="child-2-red playing-field" id="rh1"></div>
+                <div class="child-2-red playing-field" id="rh2"></div>
+                <div class="child-2-red playing-field" id="rh3"></div>
+                <div class="child-2-red playing-field" id="rh4"></div>
+                <div class="child-2-red playing-field" id="rh5"></div>
             </div>
             <div class="parent-3-red">
-                <div class="child-3-red" id="g13"></div>
-                <div class="child-3-red" id="r1"></div>
-                <div class="child-3-red" id="r2"></div>
-                <div class="child-3-red" id="r3"></div>
-                <div class="child-3-red" id="r4"></div>
-                <div class="child-3-red" id="r5"></div>
+                <div class="child-3-red playing-field" id="g13"></div>
+                <div class="child-3-red playing-field" id="r1"></div>
+                <div class="child-3-red playing-field" id="r2"></div>
+                <div class="child-3-red playing-field" id="r3"></div>
+                <div class="child-3-red playing-field" id="r4"></div>
+                <div class="child-3-red playing-field" id="r5"></div>
             </div>
         </div>
         <section class="top-right-red">
@@ -190,28 +190,28 @@
             <img class="arrow-green" src="./img/arrow-green.svg" alt="arrow green">
             <img class="icon-green" src="./img/star.svg" alt="star icon">
             <div class="parent-1-green">
-                <div class="child-1-green" id="b13"></div>
-                <div class="child-1-green" id="g1"></div>
-                <div class="child-1-green" id="g2"></div>
-                <div class="child-1-green" id="g3"></div>
-                <div class="child-1-green" id="g4"></div>
-                <div class="child-1-green" id="g5"></div>
+                <div class="child-1-green playing-field" id="b13"></div>
+                <div class="child-1-green playing-field" id="g1"></div>
+                <div class="child-1-green playing-field" id="g2"></div>
+                <div class="child-1-green playing-field" id="g3"></div>
+                <div class="child-1-green playing-field" id="g4"></div>
+                <div class="child-1-green playing-field" id="g5"></div>
             </div>
             <div class="parent-2-green">
-                <div class="child-2-green" id="b12"></div>
-                <div class="child-2-green" id="gh1"></div>
-                <div class="child-2-green" id="gh2"></div>
-                <div class="child-2-green" id="gh3"></div>
-                <div class="child-2-green" id="gh4"></div>
-                <div class="child-2-green" id="gh5"></div>
+                <div class="child-2-green playing-field" id="b12"></div>
+                <div class="child-2-green playing-field" id="gh1"></div>
+                <div class="child-2-green playing-field" id="gh2"></div>
+                <div class="child-2-green playing-field" id="gh3"></div>
+                <div class="child-2-green playing-field" id="gh4"></div>
+                <div class="child-2-green playing-field" id="gh5"></div>
             </div>
             <div class="parent-3-green">
-                <div class="child-3-green" id="b11"></div>
-                <div class="child-3-green" id="b10"></div>
-                <div class="child-3-green" id="b9"></div>
-                <div class="child-3-green" id="b8"></div>
-                <div class="child-3-green" id="b7"></div>
-                <div class="child-3-green" id="b6"></div>
+                <div class="child-3-green playing-field" id="b11"></div>
+                <div class="child-3-green playing-field" id="b10"></div>
+                <div class="child-3-green playing-field" id="b9"></div>
+                <div class="child-3-green playing-field" id="b8"></div>
+                <div class="child-3-green playing-field" id="b7"></div>
+                <div class="child-3-green playing-field" id="b6"></div>
             </div>
         </div>
         <div class="center">
@@ -224,28 +224,28 @@
             <img class="arrow-yellow" src="./img/arrow-yellow.svg" alt="arrow yellow">
             <img class="icon-yellow" src="./img/star.svg" alt="star icon">
             <div class="parent-1-yellow">
-                <div class="child-1-yellow" id="r6"></div>
-                <div class="child-1-yellow" id="r7"></div>
-                <div class="child-1-yellow" id="r8"></div>
-                <div class="child-1-yellow" id="r9"></div>
-                <div class="child-1-yellow" id="r10"></div>
-                <div class="child-1-yellow" id="r11"></div>
+                <div class="child-1-yellow playing-field" id="r6"></div>
+                <div class="child-1-yellow playing-field" id="r7"></div>
+                <div class="child-1-yellow playing-field" id="r8"></div>
+                <div class="child-1-yellow playing-field" id="r9"></div>
+                <div class="child-1-yellow playing-field" id="r10"></div>
+                <div class="child-1-yellow playing-field" id="r11"></div>
             </div>
             <div class="parent-2-yellow">
-                <div class="child-2-yellow" id="yh5"></div>
-                <div class="child-2-yellow" id="yh4"></div>
-                <div class="child-2-yellow" id="yh3"></div>
-                <div class="child-2-yellow" id="yh2"></div>
-                <div class="child-2-yellow" id="yh1"></div>
-                <div class="child-2-yellow" id="r12"></div>
+                <div class="child-2-yellow playing-field" id="yh5"></div>
+                <div class="child-2-yellow playing-field" id="yh4"></div>
+                <div class="child-2-yellow playing-field" id="yh3"></div>
+                <div class="child-2-yellow playing-field" id="yh2"></div>
+                <div class="child-2-yellow playing-field" id="yh1"></div>
+                <div class="child-2-yellow playing-field" id="r12"></div>
             </div>
             <div class="parent-3-yellow">
-                <div class="child-3-yellow" id="y5"></div>
-                <div class="child-3-yellow" id="y4"></div>
-                <div class="child-3-yellow" id="y3"></div>
-                <div class="child-3-yellow" id="y2"></div>
-                <div class="child-3-yellow" id="y1"></div>
-                <div class="child-3-yellow" id="r13"></div>
+                <div class="child-3-yellow playing-field" id="y5"></div>
+                <div class="child-3-yellow playing-field" id="y4"></div>
+                <div class="child-3-yellow playing-field" id="y3"></div>
+                <div class="child-3-yellow playing-field" id="y2"></div>
+                <div class="child-3-yellow playing-field" id="y1"></div>
+                <div class="child-3-yellow playing-field" id="r13"></div>
             </div>
         </div>
         <section class="bottom-left-blue">
@@ -255,28 +255,28 @@
             <img class="arrow-blue" src="./img/arrow-blue.svg" alt="arrow blue">
             <img class="icon-blue" src="./img/star.svg" alt="star icon">
             <div class="parent-1-blue">
-                <div class="child-1-blue" id="b5"></div>
-                <div class="child-1-blue" id="b4"></div>
-                <div class="child-1-blue" id="b3"></div>
-                <div class="child-1-blue" id="b2"></div>
-                <div class="child-1-blue" id="b1"></div>
-                <div class="child-1-blue" id="y13"></div>
+                <div class="child-1-blue playing-field" id="b5"></div>
+                <div class="child-1-blue playing-field" id="b4"></div>
+                <div class="child-1-blue playing-field" id="b3"></div>
+                <div class="child-1-blue playing-field" id="b2"></div>
+                <div class="child-1-blue playing-field" id="b1"></div>
+                <div class="child-1-blue playing-field" id="y13"></div>
             </div>
             <div class="parent-2-blue">
-                <div class="child-2-blue" id="bh5"></div>
-                <div class="child-2-blue" id="bh4"></div>
-                <div class="child-2-blue" id="bh3"></div>
-                <div class="child-2-blue" id="bh2"></div>
-                <div class="child-2-blue" id="bh1"></div>
-                <div class="child-2-blue" id="y12"></div>
+                <div class="child-2-blue playing-field" id="bh5"></div>
+                <div class="child-2-blue playing-field" id="bh4"></div>
+                <div class="child-2-blue playing-field" id="bh3"></div>
+                <div class="child-2-blue playing-field" id="bh2"></div>
+                <div class="child-2-blue playing-field" id="bh1"></div>
+                <div class="child-2-blue playing-field" id="y12"></div>
             </div>
             <div class="parent-3-blue">
-                <div class="child-3-blue" id="y6"></div>
-                <div class="child-3-blue" id="y7"></div>
-                <div class="child-3-blue" id="y8"></div>
-                <div class="child-3-blue" id="y9"></div>
-                <div class="child-3-blue" id="y10"></div>
-                <div class="child-3-blue" id="y11"></div>
+                <div class="child-3-blue playing-field" id="y6"></div>
+                <div class="child-3-blue playing-field" id="y7"></div>
+                <div class="child-3-blue playing-field" id="y8"></div>
+                <div class="child-3-blue playing-field" id="y9"></div>
+                <div class="child-3-blue playing-field" id="y10"></div>
+                <div class="child-3-blue playing-field" id="y11"></div>
             </div>
         </div>
         <section class="bottom-right-yellow">
@@ -289,7 +289,7 @@
             <div class="player-blue">
                 <img src="./img/player-blue.svg" alt="player blue">
             </div>
-            <div class="dice">
+            <div class="dice" data-dice-move="blue">
                 <div class="side front"></div>
                 <div class="side back"></div>
                 <div class="side left"></div>
@@ -305,7 +305,7 @@
             <div class="reminder-yellow arrow-reminder yellow">
                 <img src="img/arrow-reminder-left.svg" alt="arrow reminder">
             </div>
-            <div class="dice">
+            <div class="dice" data-dice-move="yellow">
                 <div class="side front"></div>
                 <div class="side back"></div>
                 <div class="side left"></div>

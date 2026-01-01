@@ -8,14 +8,14 @@ import {
     handleDialogNextClick,
     handleDialogPrevClick,
     openQuitGameModal,
-    quitGame
+    quitGame,
 } from './ui.js';
 import { startGame } from './game.js';
 
 // Global variables
 let containerFigures = null;
 
-// ИInitializing the application
+// Initializing the Application
 function init() {
     // Initializing the game board
     containerFigures = initializeBoard();
@@ -23,7 +23,7 @@ function init() {
     // Initialization of cubes
     DOM.dice.forEach(diceElement => {
         initializeDice(diceElement);
-        diceElement.addEventListener('click', handleDiceClick);
+        diceElement.addEventListener('click', ()=> handleDiceClick(event, containerFigures));
     });
 
     // Initializing navigation buttons
@@ -58,10 +58,10 @@ function init() {
     // Initializing the Exit Game Button
     DOM.buttonExitTheGame.addEventListener('click', openQuitGameModal);
 
-    // Initializing exit confirmation buttons
+    // Initializing the exit confirmation buttons
     DOM.buttonsYesOrNo.forEach(button => {
         if (button.textContent === 'Yes') {
-            button.addEventListener('click', quitGame);
+            button.addEventListener('click', ()=> quitGame(containerFigures));
         } else {
             button.addEventListener('click', () => DOM.dialog.close());
         }

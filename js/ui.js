@@ -1,5 +1,6 @@
-import { SCREENS, DIALOG_PAGES, COLORS } from './constants.js';
+import { SCREENS, DIALOG_PAGES } from './constants.js';
 import { DOM, toggleClass, hasClass } from './dom.js';
+import { resetGameState } from './game.js';
 
 // UI state
 let currentScreen = SCREENS.START;
@@ -71,7 +72,10 @@ export function handlePlayerSelectionChange(event) {
     selectedPlayers = +event.target.value;
 }
 
-// Handler for clicking the "Next" button in a dialog
+/**
+ * Handler for clicking the "Next" button in a dialog
+ * @returns {Object|undefined} game settings or undefined
+ */
 export function handleDialogNextClick() {
     if (dialogPage === DIALOG_PAGES.FIRST) {
         switchDialogPage(DIALOG_PAGES.SECOND);
@@ -100,7 +104,9 @@ export function handleDialogNextClick() {
     };
 }
 
-// Handler for clicking the "Back" button in a dialog
+/**
+ * Handler for clicking the "Back" button in a dialog
+ */
 export function handleDialogPrevClick() {
     if (dialogPage === DIALOG_PAGES.FIRST) return;
 
@@ -111,7 +117,9 @@ export function handleDialogPrevClick() {
     dialogPage = DIALOG_PAGES.FIRST;
 }
 
-// Resets the dialog state to the initial one
+/**
+ * Resets the dialog state to the initial one.
+ */
 export function resetDialogState() {
     DOM.colorOptions.forEach(option => {
         option.checked = false;
@@ -145,14 +153,23 @@ export function changeDialogContent(component) {
     });
 }
 
-// Opens a modal window to exit the game
+/**
+ * Opens a modal window to exit the game.
+ */
 export function openQuitGameModal() {
     DOM.dialog.showModal();
     changeDialogContent('dialog-quit-game');
 }
 
-// Exit the game and return to the main screen
-export function quitGame() {
+/**
+ * Exit the game and return to the main screen
+ * @param {Object} containerFigures - object with figures of players
+ */
+export function quitGame(containerFigures) {
+    // Resetting the game state
+    resetGameState(containerFigures);
+
+    // Reset UI
     resetDialogState();
     changeDialogContent('dialog-players');
     DOM.dialog.close();
@@ -164,5 +181,11 @@ export function quitGame() {
         } else {
             el.classList.add('hidden');
         }
+    });
+
+    // Resetting the dice
+    DOM.dice.forEach(diceElement => {
+        diceElement.style.animation = 'none';
+        diceElement.style.transform = 'rotateY(0deg) rotateX(0deg)';
     });
 }

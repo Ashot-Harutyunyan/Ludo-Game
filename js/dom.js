@@ -1,33 +1,35 @@
 export const DOM = {
-    // Basic Elements
+    // Basic elements
     dice: document.querySelectorAll('.dice'),
     components: document.querySelectorAll('[data-id]'),
     buttons: document.querySelectorAll('[data-target]'),
 
-    // Dialog Boxes
+    // Dialog boxes
     dialog: document.getElementById('dialog'),
     dialogComponents: document.getElementById('dialog').querySelectorAll('section'),
     dialogButtonPrev: document.getElementById('dialog-prev'),
     dialogButtonNext: document.getElementById('dialog-next'),
     dialogPlayersComponents: document.querySelectorAll('.dialog-section-content'),
 
-    // Selection Options
+    // Selection options
     colorOptions: document.querySelectorAll('input[name="color-option"]'),
     playerSelection: document.querySelectorAll('input[name="num-players"]'),
 
-    // Game Elements
+    // Game elements
     arrowReminder: document.querySelectorAll('.arrow-reminder'),
     containerPlayerAndDice: document.querySelectorAll('.container-player-and-dice'),
 
-    // Control Buttons
+    // Control buttons
     buttonExitTheGame: document.getElementById('exitTheGame'),
     buttonsYesOrNo: document.querySelectorAll('.dialog-quit-game-content-container-buttons button'),
 
-    // Game Board
-    getPlayAreaElement: (className) => document.querySelector(`.${className}`)
+    // Game board
+    getPlayAreaElement: (className) => document.querySelector(`.${className}`),
+
+    playingFields: document.querySelectorAll('.playing-field')
 };
 
-// DOM Helper Functions
+// Helper functions for working with DOM
 export function addClass(element, className) {
     element.classList.add(className);
 }

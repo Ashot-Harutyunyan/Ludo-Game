@@ -1,4 +1,6 @@
-import { DICE_FACES } from './constants.js';
+import { DICE_FACES, PLAYER_TURNS } from './constants.js';
+import { DOM } from './dom.js';
+import { handleDiceRoll } from './game.js';
 
 /**
  * Creates dots on the face of a cube
@@ -19,7 +21,7 @@ export function createDiceDots(number, parent) {
 export function initializeDice(diceElement) {
     const faces = Array.from(diceElement.children);
 
-    faces.forEach((face) => {
+    faces.forEach(face => {
         const faceName = face.className.split(' ')[1];
 
         switch (faceName) {
@@ -48,20 +50,45 @@ export function initializeDice(diceElement) {
 /**
  * Rolls a die and returns the result
  * @param {HTMLElement} diceElement - cube element
+ * @param {Object} containerFigures - object with figures of players
  * @returns {number} throw result (1-6)
  */
-export function rollDice(diceElement) {
+export function rollDice(diceElement, containerFigures) {
     const random = Math.floor(Math.random() * 6) + 1;
 
-    // Resetting and restarting animation
-    diceElement.style.animation = 'none';
-    void diceElement.offsetWidth;
-    diceElement.style.animation = 'cube .5s linear';
+    // Updating the game state
+    PLAYER_TURNS.diceMove = false;
+    PLAYER_TURNS.diceNumber = random;
 
-    // Setting the cube position depending on the result
-    applyDiceTransform(diceElement, random);
+    // Hide all reminder arrows
+    DOM.arrowReminder.forEach(element => {
+        element.style.visibility = 'hidden';
+    });
+
+    // Dice roll animation
+    animateDice(diceElement, random);
+
+    // Determine the available moves after the throw
+    handleDiceRoll(containerFigures);
 
     return random;
+}
+
+/**
+ * Animates a dice roll
+ * @param {HTMLElement} diceElement - cube element
+ * @param {number} value - dropped value
+ */
+function animateDice(diceElement, value) {
+    // Reset animation
+    diceElement.style.animation = 'none';
+    void diceElement.offsetWidth; // Trigger reflow
+
+    // Starting animation
+    diceElement.style.animation = 'cube .5s linear';
+
+    // Setting the final position
+    applyDiceTransform(diceElement, value);
 }
 
 /**
@@ -85,9 +112,16 @@ function applyDiceTransform(diceElement, value) {
 /**
  * Cube click handler
  * @param {Event} event - click event
- * @returns {number} result of the throw
+ * @param {Object} containerFigures - object with figures of players
+ * @returns {number|null} the result of the throw or null
  */
-export function handleDiceClick(event) {
+export function handleDiceClick(event, containerFigures) {
     const diceElement = event.currentTarget;
-    return rollDice(diceElement);
+
+    // We check that this is the current player's dice and that a roll is allowed.
+    if (diceElement.dataset.diceMove === PLAYER_TURNS.color && PLAYER_TURNS.diceMove) {
+        return rollDice(diceElement, containerFigures);
+    }
+
+    return null;
 }
