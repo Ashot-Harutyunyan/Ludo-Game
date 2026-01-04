@@ -12,26 +12,26 @@ import {
 } from './ui.js';
 import { startGame } from './game.js';
 
-// Global variables
+// global variables
 let containerFigures = null;
 
-// Initializing the Application
+// initializing the Application
 function init() {
-    // Initializing the game board
+    // initializing the game board
     containerFigures = initializeBoard();
 
-    // Initialization of cubes
+    // initialization of cubes
     DOM.dice.forEach(diceElement => {
         initializeDice(diceElement);
         diceElement.addEventListener('click', ()=> handleDiceClick(event, containerFigures));
     });
 
-    // Initializing navigation buttons
+    // initializing navigation buttons
     DOM.buttons.forEach(button => {
         button.addEventListener('click', handleScreenSwitchClick);
     });
 
-    // Initializing the player selection dialog
+    // initializing the player selection dialog
     DOM.dialogButtonPrev.addEventListener('click', handleDialogPrevClick);
 
     DOM.dialogButtonNext.addEventListener('click', () => {
@@ -45,20 +45,20 @@ function init() {
         }
     });
 
-    // Initializing color selection
+    // initializing color selection
     DOM.colorOptions.forEach(option => {
         option.addEventListener('change', handleColorSelect);
     });
 
-    // Initializing the selection of the number of players
+    // initializing the selection of the number of players
     DOM.playerSelection.forEach(element => {
         element.addEventListener('change', handlePlayerSelectionChange);
     });
 
-    // Initializing the Exit Game Button
+    // initializing the Exit Game Button
     DOM.buttonExitTheGame.addEventListener('click', openQuitGameModal);
 
-    // Initializing the exit confirmation buttons
+    // initializing the exit confirmation buttons
     DOM.buttonsYesOrNo.forEach(button => {
         if (button.textContent === 'Yes') {
             button.addEventListener('click', ()=> quitGame(containerFigures));
@@ -70,5 +70,5 @@ function init() {
     console.log('Ludo Game initialized successfully!');
 }
 
-// Launching the application
+// launching the application
 init();

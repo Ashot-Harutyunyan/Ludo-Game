@@ -9,7 +9,7 @@ let selectedColor = undefined;
 let selectedPlayers = 2;
 
 /**
- * Switches between application screens
+ * switches between application screens
  * @param {string} targetScreen - target screen name
  */
 export function switchScreen(targetScreen) {
@@ -32,7 +32,7 @@ export function switchScreen(targetScreen) {
 }
 
 /**
- * Click handler for the screen switch button
+ * click handler for the screen switch button
  * @param {Event} event - click event
  */
 export function handleScreenSwitchClick(event) {
@@ -45,7 +45,7 @@ export function handleScreenSwitchClick(event) {
 }
 
 /**
- * Switches pages within a dialog
+ * switches pages within a dialog
  * @param {string} targetPage - landing page name
  */
 function switchDialogPage(targetPage) {
@@ -55,7 +55,7 @@ function switchDialogPage(targetPage) {
 }
 
 /**
- * Color picker handler
+ * color picker handler
  * @param {Event} event - change event
  */
 export function handleColorSelect(event) {
@@ -65,7 +65,7 @@ export function handleColorSelect(event) {
 }
 
 /**
- * Handler for changing the number of players
+ * handler for changing the number of players
  * @param {Event} event - change event
  */
 export function handlePlayerSelectionChange(event) {
@@ -73,7 +73,7 @@ export function handlePlayerSelectionChange(event) {
 }
 
 /**
- * Handler for clicking the "Next" button in a dialog
+ * handler for clicking the "Next" button in a dialog
  * @returns {Object|undefined} game settings or undefined
  */
 export function handleDialogNextClick() {
@@ -97,7 +97,7 @@ export function handleDialogNextClick() {
 
     DOM.dialog.close();
 
-    // Returning data to launch the game
+    // returning data to launch the game
     return {
         color: selectedColor,
         players: selectedPlayers
@@ -105,7 +105,7 @@ export function handleDialogNextClick() {
 }
 
 /**
- * Handler for clicking the "Back" button in a dialog
+ * handler for clicking the "Back" button in a dialog
  */
 export function handleDialogPrevClick() {
     if (dialogPage === DIALOG_PAGES.FIRST) return;
@@ -118,7 +118,7 @@ export function handleDialogPrevClick() {
 }
 
 /**
- * Resets the dialog state to the initial one.
+ * resets the dialog state to the initial one.
  */
 export function resetDialogState() {
     DOM.colorOptions.forEach(option => {
@@ -144,7 +144,7 @@ export function resetDialogState() {
 }
 
 /**
- * Toggles the contents of the dialog
+ * toggles the contents of the dialog
  * @param {string} component - component class to display
  */
 export function changeDialogContent(component) {
@@ -154,7 +154,7 @@ export function changeDialogContent(component) {
 }
 
 /**
- * Opens a modal window to exit the game.
+ * opens a modal window to exit the game.
  */
 export function openQuitGameModal() {
     DOM.dialog.showModal();
@@ -162,14 +162,14 @@ export function openQuitGameModal() {
 }
 
 /**
- * Exit the game and return to the main screen
+ * exit the game and return to the main screen
  * @param {Object} containerFigures - object with figures of players
  */
 export function quitGame(containerFigures) {
-    // Resetting the game state
+    // resetting the game state
     resetGameState(containerFigures);
 
-    // Reset UI
+    // reset UI
     resetDialogState();
     changeDialogContent('dialog-players');
     DOM.dialog.close();
@@ -183,7 +183,7 @@ export function quitGame(containerFigures) {
         }
     });
 
-    // Resetting the dice
+    // resetting the dice
     DOM.dice.forEach(diceElement => {
         diceElement.style.animation = 'none';
         diceElement.style.transform = 'rotateY(0deg) rotateX(0deg)';

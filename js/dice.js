@@ -3,7 +3,7 @@ import { DOM } from './dom.js';
 import { handleDiceRoll } from './game.js';
 
 /**
- * Creates dots on the face of a cube
+ * creates dots on the face of a cube
  * @param {number} number - number of points
  * @param {HTMLElement} parent - parent element
  */
@@ -15,7 +15,7 @@ export function createDiceDots(number, parent) {
 }
 
 /**
- * Initializes all faces of the cube
+ * initializes all faces of the cube
  * @param {HTMLElement} diceElement - cube element
  */
 export function initializeDice(diceElement) {
@@ -48,7 +48,7 @@ export function initializeDice(diceElement) {
 }
 
 /**
- * Rolls a die and returns the result
+ * rolls a die and returns the result
  * @param {HTMLElement} diceElement - cube element
  * @param {Object} containerFigures - object with figures of players
  * @returns {number} throw result (1-6)
@@ -56,43 +56,43 @@ export function initializeDice(diceElement) {
 export function rollDice(diceElement, containerFigures) {
     const random = Math.floor(Math.random() * 6) + 1;
 
-    // Updating the game state
+    // updating the game state
     PLAYER_TURNS.diceMove = false;
     PLAYER_TURNS.diceNumber = random;
 
-    // Hide all reminder arrows
+    // hide all reminder arrows
     DOM.arrowReminder.forEach(element => {
         element.style.visibility = 'hidden';
     });
 
-    // Dice roll animation
+    // dice roll animation
     animateDice(diceElement, random);
 
-    // Determine the available moves after the throw
+    // determine the available moves after the throw
     handleDiceRoll(containerFigures);
 
     return random;
 }
 
 /**
- * Animates a dice roll
+ * animates a dice roll
  * @param {HTMLElement} diceElement - cube element
  * @param {number} value - dropped value
  */
 function animateDice(diceElement, value) {
-    // Reset animation
+    // reset animation
     diceElement.style.animation = 'none';
-    void diceElement.offsetWidth; // Trigger reflow
+    void diceElement.offsetWidth;
 
-    // Starting animation
+    // starting animation
     diceElement.style.animation = 'cube .5s linear';
 
-    // Setting the final position
+    // setting the final position
     applyDiceTransform(diceElement, value);
 }
 
 /**
- * Applies a transformation to the dice depending on the number rolled
+ * applies a transformation to the dice depending on the number rolled
  * @param {HTMLElement} diceElement - cube element
  * @param {number} value - value (1-6)
  */
@@ -110,7 +110,7 @@ function applyDiceTransform(diceElement, value) {
 }
 
 /**
- * Cube click handler
+ * cube click handler
  * @param {Event} event - click event
  * @param {Object} containerFigures - object with figures of players
  * @returns {number|null} the result of the throw or null
@@ -118,7 +118,7 @@ function applyDiceTransform(diceElement, value) {
 export function handleDiceClick(event, containerFigures) {
     const diceElement = event.currentTarget;
 
-    // We check that this is the current player's dice and that a roll is allowed.
+    // we check that this is the current player's dice and that a roll is allowed.
     if (diceElement.dataset.diceMove === PLAYER_TURNS.color && PLAYER_TURNS.diceMove) {
         return rollDice(diceElement, containerFigures);
     }
