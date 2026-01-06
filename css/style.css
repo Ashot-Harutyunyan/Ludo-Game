@@ -1095,6 +1095,13 @@ main {
     bottom: 13px;
     cursor: pointer;
 }
+.figure-transform {
+    transform: scale(0.5);
+    opacity: 0.5;
+}
+.figure-transition {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
 @keyframes animateBackground {
     25% {
         background-position: 0 100%;

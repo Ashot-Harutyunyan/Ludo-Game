@@ -315,9 +315,7 @@ export async function returnSingleFigure(captureInfo, containerFigures) {
     if (!figure) return;
 
     // adding a visual capture effect
-    figure.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
-    figure.style.transform = 'scale(0.5)';
-    figure.style.opacity = '0.5';
+    figure.classList.add('figure-transform', 'figure-transition')
 
     await delay(400);
 
@@ -334,9 +332,8 @@ export async function returnSingleFigure(captureInfo, containerFigures) {
 
     // restoring visual state
     await delay(100);
-    figure.style.transform = 'none';
-    figure.style.opacity = '1';
+    figure.classList.remove('figure-transform')
 
     await delay(300);
-    figure.style.transition = '';
+    figure.classList.remove('figure-transition')
 }

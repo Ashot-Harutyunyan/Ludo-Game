@@ -151,8 +151,8 @@ function createFigureClickHandler(figure, color, index, containerFigures) {
             }
 
             // check if the throw gives the right to an extra turn
-            // also give an extra turn if the piece is captured
-            const extraTurn = shouldGrantExtraTurn(PLAYER_TURNS.diceNumber) || captureInfo.length > 0;
+            // also give an extra turn if the piece is captured or goes home
+            const extraTurn = shouldGrantExtraTurn(PLAYER_TURNS.diceNumber) || captureInfo.length > 0 || newPosition === `home_${color}`;
 
             // we finish the move
             completeTurn(extraTurn);
