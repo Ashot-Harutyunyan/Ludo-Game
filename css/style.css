@@ -1075,8 +1075,8 @@ main {
 .img-star-sun-4-blue, .img-star-sun-3-blue, .img-star-sun-2-blue, .img-star-sun-1-blue,
 .img-star-sun-4-yellow, .img-star-sun-3-yellow, .img-star-sun-2-yellow, .img-star-sun-1-yellow {
     display: none;
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
 }
 .img-star-sun-4-red.active, .img-star-sun-3-red.active, .img-star-sun-2-red.active, .img-star-sun-1-red.active,
@@ -1101,6 +1101,46 @@ main {
 }
 .figure-transition {
     transition: transform 0.3s ease, opacity 0.3s ease;
+}
+@keyframes border_pulse_blue {
+    0%, 100% {
+        border-color: rgba(0, 137, 217, 1);
+        box-shadow: 0 0 0 rgba(0, 137, 217, 0);
+    }
+    50% {
+        border-color: rgba(0, 137, 217, 0.6);
+        box-shadow: 0 0 15px rgba(0, 137, 217, 0.4);
+    }
+}
+@keyframes border_pulse_yellow {
+    0%, 100% {
+        border-color: rgba(254, 212, 3, 1);
+        box-shadow: 0 0 0 rgba(254, 212, 3, 0);
+    }
+    50% {
+        border-color: rgba(254, 212, 3, 0.6);
+        box-shadow: 0 0 15px rgba(254, 212, 3, 0.4);
+    }
+}
+@keyframes border_pulse_green {
+    0%, 100% {
+        border-color: rgba(111, 206, 102, 1);
+        box-shadow: 0 0 0 rgba(111, 206, 102, 0);
+    }
+    50% {
+        border-color: rgba(111, 206, 102, 0.6);
+        box-shadow: 0 0 15px rgba(111, 206, 102, 0.4);
+    }
+}
+@keyframes border_pulse_red {
+    0%, 100% {
+        border-color: rgba(238, 49, 7, 1);
+        box-shadow: 0 0 0 rgba(238, 49, 7, 0);
+    }
+    50% {
+        border-color: rgba(238, 49, 7, 0.6);
+        box-shadow: 0 0 15px rgba(238, 49, 7, 0.4);
+    }
 }
 @keyframes animateBackground {
     25% {
@@ -1205,8 +1245,8 @@ main {
     .img-star-sun-4-green, .img-star-sun-3-green, .img-star-sun-2-green, .img-star-sun-1-green,
     .img-star-sun-4-blue, .img-star-sun-3-blue, .img-star-sun-2-blue, .img-star-sun-1-blue,
     .img-star-sun-4-yellow, .img-star-sun-3-yellow, .img-star-sun-2-yellow, .img-star-sun-1-yellow {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
     }
     .center {
         width: 90px;
@@ -1447,8 +1487,8 @@ main {
     .img-star-sun-4-green, .img-star-sun-3-green, .img-star-sun-2-green, .img-star-sun-1-green,
     .img-star-sun-4-blue, .img-star-sun-3-blue, .img-star-sun-2-blue, .img-star-sun-1-blue,
     .img-star-sun-4-yellow, .img-star-sun-3-yellow, .img-star-sun-2-yellow, .img-star-sun-1-yellow {
-        width: 25px;
-        height: 25px;
+        width: 28px;
+        height: 28px;
     }
     .center {
         width: 66px;

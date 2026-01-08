@@ -1,7 +1,6 @@
-import { PLAYER_TURNS, positionalFigures, pathArray, homePathEntries, nearTheHouse, safePaths } from './constants.js';
+import { playerTurns, positionalFigures, pathArray, homePathEntries, nearTheHouse, safePaths } from './constants.js';
 import { DOM } from './dom.js';
 import { homeContainerFigures } from './board.js';
-import { completeTurn } from './turn-manager.js';
 
 /**
  * delay for animation
@@ -20,7 +19,7 @@ function delay(ms) {
  */
 export function canLeaveSafeZone(color, figureIndex) {
     const location = positionalFigures[color][figureIndex + 1];
-    return location.startsWith('starting_player') && PLAYER_TURNS.diceNumber === 6;
+    return location.startsWith('starting_player') && playerTurns.diceNumber === 6;
 }
 
 /**
@@ -151,7 +150,6 @@ export function calculateNewPosition(currentPosition, steps, color) {
 function moveFigureToCell(figureElement, toPosition) {
     // check if the target position is a home (home_${color})
     if (toPosition.startsWith('home_')) {
-        completeTurn()
         const homeElement = document.getElementById(toPosition);
         if (homeElement) {
             homeElement.appendChild(figureElement);
@@ -226,7 +224,7 @@ export function isMovePossible(color, figureIndex, diceValue) {
  */
 export async function executeMove(figureElement, color, figureIndex) {
     const currentPosition = positionalFigures[color][figureIndex + 1];
-    const steps = PLAYER_TURNS.diceNumber;
+    const steps = playerTurns.diceNumber;
 
     // exit from the starting area
     if (canLeaveSafeZone(color, figureIndex)) {
@@ -257,14 +255,14 @@ export async function executeMove(figureElement, color, figureIndex) {
  * @returns {Object|null} information about the captured figure or null
  */
 export function checkCapture(position, currentColor) {
-    // Checking if the position is safe
+    // checking if the position is safe
     if (safePaths.includes(position)) {
         return [];
     }
 
     let captured = [];
 
-    // We are looking for opponents' pieces in this position
+    // we are looking for opponents' pieces in this position
     for (const color in positionalFigures) {
         // let skip our color
         if (color === currentColor) continue;

@@ -1,13 +1,9 @@
+// SCREAMING_SNAKE_CASE for true constants
 export const COLORS = {
     GREEN: 'green',
     RED: 'red',
     BLUE: 'blue',
     YELLOW: 'yellow'
-};
-
-export const PLAYERS_COUNT = {
-    TWO: 2,
-    FOUR: 4
 };
 
 export const FIGURES = [
@@ -43,7 +39,8 @@ export const IMAGE_PATHS = {
     PLAYER: (color) => `./img/player-${color}.svg`
 };
 
-export const PLAYER_TURNS = {
+// camelCase for configuration objects and data structures
+export const playerTurns = {
     color: '',
     diceMove: false,
     diceNumber: null

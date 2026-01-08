@@ -1,4 +1,4 @@
-import { DICE_FACES, PLAYER_TURNS } from './constants.js';
+import { DICE_FACES, playerTurns } from './constants.js';
 import { DOM } from './dom.js';
 import { handleDiceRoll } from './game.js';
 
@@ -57,8 +57,8 @@ export function rollDice(diceElement, containerFigures) {
     const random = Math.floor(Math.random() * 6) + 1;
 
     // updating the game state
-    PLAYER_TURNS.diceMove = false;
-    PLAYER_TURNS.diceNumber = random;
+    playerTurns.diceMove = false;
+    playerTurns.diceNumber = random;
 
     // hide all reminder arrows
     DOM.arrowReminder.forEach(element => {
@@ -119,7 +119,7 @@ export function handleDiceClick(event, containerFigures) {
     const diceElement = event.currentTarget;
 
     // we check that this is the current player's dice and that a roll is allowed.
-    if (diceElement.dataset.diceMove === PLAYER_TURNS.color && PLAYER_TURNS.diceMove) {
+    if (diceElement.dataset.diceMove === playerTurns.color && playerTurns.diceMove) {
         return rollDice(diceElement, containerFigures);
     }
 

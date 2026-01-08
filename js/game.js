@@ -1,4 +1,4 @@
-import { COLORS, PLAYER_TURNS, positionalFigures } from './constants.js';
+import { COLORS, playerTurns, positionalFigures } from './constants.js';
 import { DOM } from './dom.js';
 import { executeMove, checkCapture, returnCapturedFigures } from './movement.js';
 import {
@@ -9,6 +9,163 @@ import {
     updateTurnIndicators
 } from './turn-manager.js';
 import { homeContainerFigures } from './board.js';
+import { showVictoryScreen } from './ui.js';
+
+// array for tracking winners
+let winners = [];
+let totalPlayers = 2;
+
+/**
+ * checks if the player has won (all 4 house pieces)
+ * @param {string} color - player color
+ * @returns {boolean}
+ */
+export function checkVictory(color) {
+    const homePosition = `home_${color}`;
+    let figuresAtHome = 0;
+
+    for (let i = 1; i <= 4; i++) {
+        if (positionalFigures[color][i] === homePosition) {
+            figuresAtHome++;
+        }
+    }
+
+    return figuresAtHome === 4;
+}
+
+/**
+ * processes a player's victory
+ * @param {string} color - the color of the winning player
+ */
+function handlePlayerVictory(color) {
+    // adding a player to the list of winners
+    winners.push(color);
+    const place = winners.length;
+
+    // if there are 2 players, the game ends.
+    if (totalPlayers === 2) {
+        const secondPlace = playerTurns.playerQueueArray.find(el => el !== color);
+        winners.push(secondPlace);
+        showVictoryScreen(color, winners);
+        return true;
+    }
+
+    // if there are 4 players playing
+    if (totalPlayers === 4) {
+        // we mark the player and show his place
+        hidePlayerUI(color, place);
+
+        // if there is one player left, he is the last one.
+        if (winners.length === 3) {
+            const lastPlayer = playerTurns.playerQueueArray.find(
+                p => !winners.includes(p)
+            );
+            winners.push(lastPlayer);
+            hidePlayerUI(lastPlayer, 4);
+
+            // there is a slight delay before the final screen is shown.
+            setTimeout(() => {
+                showVictoryScreen(color, winners);
+            }, 1000);
+            return true;
+        }
+
+        // remove the winning player from the queue
+        playerTurns.playerQueueArray = playerTurns.playerQueueArray.filter(
+            p => p !== color
+        );
+
+        // if the current player wins, switch to the next one
+        if (playerTurns.color === color) {
+            const nextIndex = 0;
+            playerTurns.color = playerTurns.playerQueueArray[nextIndex];
+            playerTurns.diceMove = true;
+            updateTurnIndicators(playerTurns.color);
+        }
+
+        return false;
+    }
+}
+
+/**
+ * marks the UI elements of the winning player
+ * @param {string} color - player color
+ * @param {number} place - player's place (1, 2, 3)
+ */
+function hidePlayerUI(color, place) {
+    DOM.containerPlayerAndDice.forEach(element => {
+        if (element.classList.contains(color)) {
+            // making it translucent
+            element.style.opacity = '0.5';
+            element.style.pointerEvents = 'none';
+
+            // hiding the player's avatar
+            const playerAvatar = element.querySelector(`[class^="player-"]`);
+            if (playerAvatar) {
+                playerAvatar.style.display = 'none';
+            }
+
+            // create a location indicator if it doesn't exist yet
+            let placeIndicator = element.querySelector('.place-indicator');
+            if (!placeIndicator) {
+                placeIndicator = document.createElement('div');
+                placeIndicator.className = 'place-indicator';
+                placeIndicator.style.cssText = `
+                    font-family: 'Luckiest Guy', cursive;
+                    font-size: clamp(20px, 4vw, 28px);
+                    color: ${getColorHex(color)};
+                    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 40px;
+                `;
+
+                // we insert in place of the avatar
+                if (playerAvatar && playerAvatar.parentNode) {
+                    playerAvatar.parentNode.insertBefore(placeIndicator, playerAvatar);
+                }
+            }
+
+            // setting the seat number
+            placeIndicator.textContent = `${place}${getPlaceSuffix(place)}`;
+        }
+    });
+}
+
+/**
+ * receives a suffix for place (st, nd, rd, th)
+ * @param {number} place - seat number
+ * @returns {string}
+ */
+function getPlaceSuffix(place) {
+    if (place === 1) return 'st';
+    if (place === 2) return 'nd';
+    if (place === 3) return 'rd';
+    return 'th';
+}
+
+/**
+ * gets the HEX color code
+ * @param {string} color - color name
+ * @returns {string}
+ */
+function getColorHex(color) {
+    const colors = {
+        red: '#EE3107',
+        blue: '#0089D9',
+        green: '#6FCE66',
+        yellow: '#FED403'
+    };
+    return colors[color] || '#FFFFFF';
+}
+
+/**
+ * resets data on winners
+ */
+export function resetVictoryState() {
+    winners = [];
+}
 
 /**
  * hides or shows players pieces
@@ -42,6 +199,8 @@ export function togglePlayerFigures(containerFigures, activeColors) {
  */
 export function setupGameUI(selectedColor, playersCount, containerFigures) {
     let activeColors;
+
+    totalPlayers = playersCount;
 
     if (playersCount === 2) {
         activeColors = getTwoPlayerColors(selectedColor);
@@ -84,7 +243,7 @@ function hideInactiveDice(activeColors) {
 }
 
 /**
- * Sets the reminder arrows for the current player.
+ * sets the reminder arrows for the current player.
  * @param {string} selectedColor - current players color
  */
 function setupArrowReminders(selectedColor) {
@@ -132,7 +291,7 @@ function createFigureClickHandler(figure, color, index, containerFigures) {
         }
 
         // we check that this color is currently in play.
-        if (color !== PLAYER_TURNS.color) {
+        if (color !== playerTurns.color) {
             return;
         }
 
@@ -150,9 +309,19 @@ function createFigureClickHandler(figure, color, index, containerFigures) {
                 await returnCapturedFigures(captureInfo, containerFigures);
             }
 
+            // checking the victory after the move
+            if (checkVictory(color)) {
+                const gameEnded = handlePlayerVictory(color);
+                if (gameEnded) {
+                    return; // game over
+                }
+            }
+
             // check if the throw gives the right to an extra turn
             // also give an extra turn if the piece is captured or goes home
-            const extraTurn = shouldGrantExtraTurn(PLAYER_TURNS.diceNumber) || captureInfo.length > 0 || newPosition === `home_${color}`;
+            const extraTurn = shouldGrantExtraTurn(playerTurns.diceNumber) ||
+                captureInfo.length > 0 ||
+                newPosition === `home_${color}`;
 
             // we finish the move
             completeTurn(extraTurn);
@@ -163,7 +332,7 @@ function createFigureClickHandler(figure, color, index, containerFigures) {
 }
 
 /**
- * initializes click handlers for all shapes.
+ * initializes click handlers for all shapes
  * @param {Object} containerFigures - object with figures of players
  */
 function setupFigureClickHandlers(containerFigures) {
@@ -182,6 +351,9 @@ function setupFigureClickHandlers(containerFigures) {
  * @param {Object} containerFigures - object with figures of players
  */
 export function startGame(selectedColor, playersCount, containerFigures) {
+    // resetting the winners' data
+    resetVictoryState();
+
     // customizing the UI and getting active colors
     const activeColors = setupGameUI(selectedColor, playersCount, containerFigures);
 
@@ -189,16 +361,16 @@ export function startGame(selectedColor, playersCount, containerFigures) {
     const turnOrder = sortColorsByTurnOrder(activeColors, selectedColor);
 
     // initializing the game state
-    PLAYER_TURNS.color = turnOrder[0];
-    PLAYER_TURNS.diceMove = true;
-    PLAYER_TURNS.diceNumber = null;
-    PLAYER_TURNS.playerQueueArray = turnOrder;
+    playerTurns.color = turnOrder[0];
+    playerTurns.diceMove = true;
+    playerTurns.diceNumber = null;
+    playerTurns.playerQueueArray = turnOrder;
 
     // initializing shape click handlers
     setupFigureClickHandlers(containerFigures);
 
     // updated visual indicators
-    updateTurnIndicators(PLAYER_TURNS.color);
+    updateTurnIndicators(playerTurns.color);
 }
 
 /**
@@ -216,10 +388,13 @@ export function handleDiceRoll(containerFigures) {
 export function resetGameState(containerFigures) {
     clearAllHighlights(containerFigures);
 
-    PLAYER_TURNS.color = '';
-    PLAYER_TURNS.diceMove = false;
-    PLAYER_TURNS.diceNumber = null;
-    PLAYER_TURNS.playerQueueArray = [];
+    playerTurns.color = '';
+    playerTurns.diceMove = false;
+    playerTurns.diceNumber = null;
+    playerTurns.playerQueueArray = [];
+
+    // we're dropping the winners
+    resetVictoryState();
 
     // return all figures to their original positions
     for (let color in positionalFigures) {

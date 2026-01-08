@@ -9,6 +9,92 @@ let selectedColor = undefined;
 let selectedPlayers = 2;
 
 /**
+ * shows the victory screen
+ * @param {string} winnerColor - winner's color
+ * @param {Array<string>} winners - array of winners by place
+ */
+export function showVictoryScreen(winnerColor, winners) {
+    DOM.dialog.showModal();
+    changeDialogContent('dialog-quit-game');
+
+    const dialogContent = document.querySelector('.dialog-quit-game-content');
+    const h2 = dialogContent.querySelector('h2');
+    const buttonsContainer = dialogContent.querySelector('.dialog-quit-game-content-container-buttons');
+
+    // we generate text depending on the number of players
+    if (winners.length === 2) {
+        h2.textContent = `${getColorName(winnerColor).toUpperCase()} WINS!`;
+    } else {
+        // for 4 players, we show the locations
+        h2.textContent = 'GAME OVER!';
+    }
+
+    // create a list of places
+    const resultsList = document.createElement('div');
+    resultsList.style.cssText = `
+        margin: 20px 0;
+        font-family: 'Luckiest Guy', cursive;
+        font-size: 20px;
+        color: white;
+        text-align: center;
+    `;
+
+    winners.forEach((color, index) => {
+        const place = document.createElement('p');
+        place.textContent = `${index + 1}. ${getColorName(color).toUpperCase()}`;
+        place.style.cssText = `
+            margin: 10px 0;
+            color: ${getColorHex(color)};
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        `;
+        resultsList.appendChild(place);
+    });
+
+    // insert a list before the buttons
+    dialogContent.insertBefore(resultsList, buttonsContainer);
+
+    DOM.homeBorder.forEach((elem)=>{
+        elem.style.animation = 'none';
+        void elem.offsetWidth;
+    })
+
+    // changing the button text
+    const buttons = buttonsContainer.querySelectorAll('button');
+    buttons[0].textContent = 'New Game';
+    buttons[1].style.display = 'none'; // hiding the "No" button
+}
+
+/**
+ * gets the name of the color
+ * @param {string} color - color code
+ * @returns {string}
+ */
+function getColorName(color) {
+    const names = {
+        red: 'Red',
+        blue: 'Blue',
+        green: 'Green',
+        yellow: 'Yellow'
+    };
+    return names[color] || color;
+}
+
+/**
+ * gets the HEX color code
+ * @param {string} color - color name
+ * @returns {string}
+ */
+function getColorHex(color) {
+    const colors = {
+        red: '#EE3107',
+        blue: '#0089D9',
+        green: '#6FCE66',
+        yellow: '#FED403'
+    };
+    return colors[color] || '#FFFFFF';
+}
+
+/**
  * switches between application screens
  * @param {string} targetScreen - target screen name
  */
@@ -136,11 +222,42 @@ export function resetDialogState() {
 
     DOM.containerPlayerAndDice.forEach(elem => {
         elem.style.visibility = '';
+        elem.style.opacity = '';
+        elem.style.pointerEvents = '';
+
+        // restoring player avatars
+        const playerAvatar = elem.querySelector(`[class^="player-"]`);
+        if (playerAvatar) {
+            playerAvatar.style.display = '';
+        }
+
+        // removing location indicators
+        const placeIndicator = elem.querySelector('.place-indicator');
+        if (placeIndicator) {
+            placeIndicator.remove();
+        }
     });
 
     DOM.arrowReminder.forEach(elem => {
         elem.style.visibility = '';
     });
+
+    // restoring the original contents of the victory dialog
+    const dialogContent = document.querySelector('.dialog-quit-game-content');
+    const h2 = dialogContent.querySelector('h2');
+    const buttonsContainer = dialogContent.querySelector('.dialog-quit-game-content-container-buttons');
+    const buttons = buttonsContainer.querySelectorAll('button');
+
+    h2.textContent = 'QUIT GAME?';
+    buttons[0].textContent = 'Yes';
+    buttons[1].style.display = '';
+    buttons[1].textContent = 'No';
+
+    // delete the results list if there is one.
+    const resultsList = dialogContent.querySelector('div[style*="margin: 20px 0"]');
+    if (resultsList) {
+        resultsList.remove();
+    }
 }
 
 /**

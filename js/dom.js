@@ -27,7 +27,10 @@ export const DOM = {
     getPlayAreaElement: (className) => document.querySelector(`.${className}`),
 
     // playing field cups
-    playingFields: document.querySelectorAll('.playing-field')
+    playingFields: document.querySelectorAll('.playing-field'),
+
+    //  house border of all players
+    homeBorder: document.querySelectorAll('.home-border')
 };
 
 // helper functions for working with DOM

@@ -78,7 +78,7 @@ function createPlayerIcon(color, index) {
 }
 
 /**
- * cxtracts color from element classes
+ * extracts color from element classes
  * @param {HTMLElement} element - DOM element
  * @returns {string} color
  */

@@ -1,4 +1,4 @@
-import { PLAYER_TURNS, positionalFigures } from './constants.js';
+import { playerTurns, positionalFigures } from './constants.js';
 import { DOM } from './dom.js';
 import { isMovePossible } from './movement.js';
 
@@ -63,14 +63,14 @@ export function clearAllHighlights(containerFigures) {
  * @returns {string} next players color
  */
 export function switchToNextPlayer() {
-    const currentIndex = PLAYER_TURNS.playerQueueArray.indexOf(PLAYER_TURNS.color);
-    const nextIndex = (currentIndex + 1) % PLAYER_TURNS.playerQueueArray.length;
+    const currentIndex = playerTurns.playerQueueArray.indexOf(playerTurns.color);
+    const nextIndex = (currentIndex + 1) % playerTurns.playerQueueArray.length;
 
-    PLAYER_TURNS.color = PLAYER_TURNS.playerQueueArray[nextIndex];
-    PLAYER_TURNS.diceMove = true;
-    PLAYER_TURNS.diceNumber = null;
+    playerTurns.color = playerTurns.playerQueueArray[nextIndex];
+    playerTurns.diceMove = true;
+    playerTurns.diceNumber = null;
 
-    return PLAYER_TURNS.color;
+    return playerTurns.color;
 }
 
 /**
@@ -98,6 +98,19 @@ export function updateTurnIndicators(currentColor) {
             arrow.style.visibility = 'visible';
         }
     });
+
+    // the animation of the house border of all players runs away
+    DOM.homeBorder.forEach((elem)=>{
+        elem.style.animation = 'none';
+        void elem.offsetWidth;
+    })
+
+    // gives animation to the borders of the current player's house
+    DOM.homeBorder.forEach((elem)=>{
+        if(elem.classList.contains(currentColor)){
+            elem.style.animation = `border_pulse_${currentColor} 1.2s infinite ease-in-out`
+        }
+    });
 }
 
 /**
@@ -105,8 +118,8 @@ export function updateTurnIndicators(currentColor) {
  * @param {Object} containerFigures - all players figures
  */
 export function determineAvailableMoves(containerFigures) {
-    const color = PLAYER_TURNS.color;
-    const diceValue = PLAYER_TURNS.diceNumber;
+    const color = playerTurns.color;
+    const diceValue = playerTurns.diceNumber;
 
     const movableFigures = getMovableFigures(color);
 
@@ -114,7 +127,7 @@ export function determineAvailableMoves(containerFigures) {
     if (movableFigures.length === 0 && diceValue !== 6) {
         setTimeout(() => {
             switchToNextPlayer();
-            updateTurnIndicators(PLAYER_TURNS.color);
+            updateTurnIndicators(playerTurns.color);
         }, 800);
         return;
     }
@@ -142,7 +155,7 @@ export function determineAvailableMoves(containerFigures) {
     if (availableIndices.length === 0) {
         setTimeout(() => {
             switchToNextPlayer();
-            updateTurnIndicators(PLAYER_TURNS.color);
+            updateTurnIndicators(playerTurns.color);
         }, 800);
         return;
     }
@@ -162,8 +175,8 @@ export function completeTurn(extraTurnGranted = false) {
         switchToNextPlayer();
     } else {
         // an extra turn is simply allowing the dice to be rolled again.
-        PLAYER_TURNS.diceMove = true;
+        playerTurns.diceMove = true;
     }
 
-    updateTurnIndicators(PLAYER_TURNS.color);
+    updateTurnIndicators(playerTurns.color);
 }
